@@ -35,11 +35,16 @@ struct ContentView: View {
         return amountPerPerson
     }
 
+    var localDallerFormat: FloatingPointFormatStyle<Double>.Currency {
+        let codeString = Locale.current.currencyCode ?? "USD"
+        return FloatingPointFormatStyle<Double>.Currency( code: codeString)
+    }
+
     var body: some View {
         NavigationView {
             Form {
                 Section {
-                    TextField("Amount", value: $checkAmount, format: .currency(code: Locale.current.currencyCode ?? "USD"))
+                    TextField("Amount", value: $checkAmount, format: localDallerFormat)
                         .keyboardType(.decimalPad)
                         .focused($ammountIsFocused)
 
@@ -74,13 +79,13 @@ struct ContentView: View {
                 }
 
                 Section {
-                    Text(checkPlusTip, format: .currency(code: Locale.current.currencyCode ?? "USD"))
+                    Text(checkPlusTip, format: localDallerFormat)
                 } header: {
                     Text("Amount Plus Tip")
                 }
 
                 Section {
-                    Text(totalPerPerson, format: .currency(code: Locale.current.currencyCode ?? "USD"))
+                    Text(totalPerPerson, format: localDallerFormat)
                 } header: {
                     Text("Amount person")
                 }
