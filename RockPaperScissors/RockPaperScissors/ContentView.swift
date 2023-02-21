@@ -44,7 +44,10 @@ struct ContentView: View {
     @State private var win = Bool.random()
     @State private var score = 0
     @State private var showingResult = false
+    @State private var resetGame = false
     @State private var resultText = ""
+    @State private var finalScoreTitle = ""
+    @State private var numberofGuesses = 0
         
     init() {
         shot = returnRandomShot()
@@ -90,7 +93,7 @@ struct ContentView: View {
             .padding()
             .font(.title)
             
-            Text("Which choice to \(win ? "win" : "lose")?")
+            Text("Which choice \(win ? "allows  you to win" : "causes you to lose")?")
                 .padding()
                 .font(.title2)
             
@@ -130,6 +133,15 @@ struct ContentView: View {
             Button("Continue", action: askQuestion)
         } message: {
             Text("Your score is \(score)")
+        }
+        .alert(isPresented: $resetGame) {
+            Alert(title: Text(finalScoreTitle),
+                  message: Text("Would you like to start a new game?"),
+                  primaryButton: .default(Text("Yes")) {
+                startNewGame()
+            },
+                  secondaryButton: .cancel()
+            )
         }
     }
 
@@ -173,12 +185,25 @@ struct ContentView: View {
         } else {
             resultText = "Not Quite.  You wanted \(answer.emoji)."
         }
-        showingResult = true
+
+        numberofGuesses += 1
+        if numberofGuesses < 8 {
+            showingResult = true
+        } else {
+            finalScoreTitle = "\(resultText)\nYour final score is \(score) out of \(numberofGuesses)"
+            resetGame = true
+        }
     }
 
     func askQuestion() {
         shot = returnRandomShot()
         win = Bool.random()
+    }
+    
+    func startNewGame() {
+        score = 0
+        numberofGuesses = 0
+        askQuestion()
     }
 }
 
