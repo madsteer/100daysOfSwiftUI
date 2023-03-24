@@ -30,7 +30,7 @@ struct ContentView: View {
                 Section {
                     DatePicker("Please enter a time", selection: $wakeUp, displayedComponents: .hourAndMinute)
                         .labelsHidden()
-                        .frame(minWidth: 0, maxWidth: .infinity, alignment: .trailing   )
+                        .frame(minWidth: 0, maxWidth: .infinity, alignment: .trailing)
                 } header: {
                     Text("When do you want to wake up?")
                         .bold()
@@ -44,7 +44,14 @@ struct ContentView: View {
                 }
                 
                 Section {
-                    Stepper(coffeeAmount == 1 ? "1 cup" : "\(coffeeAmount) cups", value: $coffeeAmount, in: 1...20)
+//                    Stepper(coffeeAmount == 1 ? "1 cup" : "\(coffeeAmount) cups", value: $coffeeAmount, in: 1...20)
+                    Picker(coffeeAmount == 1 ? "1 cup" : "\(coffeeAmount) cups", selection: $coffeeAmount) {
+                        ForEach(1..<21) {
+                            Text("\($0) cups")
+                        }
+                    }
+                    .labelsHidden()
+                    .frame(minWidth: 0, maxWidth: .infinity, alignment: .trailing)
                 } header: {
                     Text("Daily coffee intake")
                         .bold()
