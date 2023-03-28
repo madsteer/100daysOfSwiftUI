@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var words = [String]()
     @State private var usedWords = [String]()
     @State private var rootWord = ""
     @State private var newWord = ""
@@ -33,6 +32,7 @@ struct ContentView: View {
             }
             .navigationTitle(rootWord)
             .onSubmit(addNewWord)
+            .onAppear(perform: startGame)
         }
     }
     
@@ -48,21 +48,25 @@ struct ContentView: View {
         newWord = ""
     }
     
-//    func loadFile() {
-//        if let fileURL = Bundle.main.url(forResource: "some-file", withExtension: "txt") {
-//            if let fileContents = try? String(contentsOf: fileURL) {
-//                words = fileContents.components(separatedBy: "\n")
-//            }
-//        }
-//    }
-//    
+    func startGame() {
+        if let startWordsURL = Bundle.main.url(forResource: "start", withExtension: "txt") {
+            if let startWords = try? String(contentsOf: startWordsURL) {
+                let allWords = startWords.components(separatedBy: "\n")
+                rootWord = allWords.randomElement() ?? "silkworm"
+                return
+            }
+        }
+        
+        fatalError("Could not load start.txt from bundle.")
+    }
+
 //    func test() {
 //        let word = "swift"
 //        let checker = UITextChecker()
-//        
+//
 //        let range = NSRange(location: 0, length: word.utf16.count)
 //        let misspeleldRange = checker.rangeOfMisspelledWord(in: word, range: range, startingAt: 0, wrap: false, language: "en")
-//        
+//
 //        let allGood = misspeleldRange.location == NSNotFound
 //    }
 }
