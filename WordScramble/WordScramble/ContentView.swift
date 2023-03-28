@@ -8,28 +8,63 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var words = [String]()
+    @State private var usedWords = [String]()
+    @State private var rootWord = ""
+    @State private var newWord = ""
+    
     var body: some View {
-        List(0..<5) {
-            Text("Dynamic row \($0 + 1)")
-//            Section("Section 1") {
-//                Text("Static Row 1")
-//                Text("Static Row 2")
-//            }
-//
-//            Section("Section 2") {
-//                ForEach(0..<5) {
-//                    Text("Dynamic row \($0+1)")
-//                }
-//            }
-//
-//            Section("Section 3") {
-//                Text("Hello, world!")
-//                Text("Hello, world!")
-//                Text("Hello, world!")
-//            }
+        NavigationView {
+            List {
+                Section {
+                    TextField("Enter your word", text: $newWord)
+                        .autocapitalization(.none)
+                }
+                
+                Section {
+                    ForEach(usedWords, id: \.self) { word in
+                        HStack {
+                            Image(systemName: "\(word.count).circle")
+                            
+                            Text(word)
+                        }
+                    }
+                }
+            }
+            .navigationTitle(rootWord)
+            .onSubmit(addNewWord)
         }
-        .listStyle(.grouped)
     }
+    
+    func addNewWord() {
+        let answer = newWord.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)
+        guard answer.count > 0 else { return }
+        
+        // extra validation later
+        
+        withAnimation {
+            usedWords.insert(answer, at: 0)
+        }
+        newWord = ""
+    }
+    
+//    func loadFile() {
+//        if let fileURL = Bundle.main.url(forResource: "some-file", withExtension: "txt") {
+//            if let fileContents = try? String(contentsOf: fileURL) {
+//                words = fileContents.components(separatedBy: "\n")
+//            }
+//        }
+//    }
+//    
+//    func test() {
+//        let word = "swift"
+//        let checker = UITextChecker()
+//        
+//        let range = NSRange(location: 0, length: word.utf16.count)
+//        let misspeleldRange = checker.rangeOfMisspelledWord(in: word, range: range, startingAt: 0, wrap: false, language: "en")
+//        
+//        let allGood = misspeleldRange.location == NSNotFound
+//    }
 }
 
 struct ContentView_Previews: PreviewProvider {
