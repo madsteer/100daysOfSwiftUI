@@ -51,8 +51,11 @@ struct ContentView: View {
     func addNewWord() {
         wordFieldIsFocused = true
         let answer = newWord.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)
-        guard answer.count > 0 else { return }
         
+        guard isLongEnough(word: answer) else {
+            wordError(title: "Word too short", message: "Word needs to be 3 or more characters in length!")
+            return
+        }
         guard isOriginal(word: answer) else {
             wordError(title: "Word used already", message: "Be more original!")
             return
@@ -110,6 +113,10 @@ struct ContentView: View {
         let misspeleldRange = checker.rangeOfMisspelledWord(in: word, range: range, startingAt: 0, wrap: false, language: "en")
 
         return misspeleldRange.location == NSNotFound
+    }
+    
+    func isLongEnough(word: String) -> Bool {
+        word.count > 2
     }
     
     func wordError(title: String, message: String) {
