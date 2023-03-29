@@ -11,6 +11,7 @@ struct ContentView: View {
     @State private var usedWords = [String]()
     @State private var rootWord = ""
     @State private var newWord = ""
+    @FocusState private var wordFieldIsFocused: Bool
     
     @State private var errorTitle = ""
     @State private var errorMessage = ""
@@ -22,6 +23,8 @@ struct ContentView: View {
                 Section {
                     TextField("Enter your word", text: $newWord)
                         .autocapitalization(.none)
+                        .disableAutocorrection(true)
+                        .focused($wordFieldIsFocused)
                 }
                 
                 Section {
@@ -46,6 +49,7 @@ struct ContentView: View {
     }
     
     func addNewWord() {
+        wordFieldIsFocused = true
         let answer = newWord.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)
         guard answer.count > 0 else { return }
         
@@ -71,6 +75,7 @@ struct ContentView: View {
     }
     
     func startGame() {
+        wordFieldIsFocused = true
         if let startWordsURL = Bundle.main.url(forResource: "start", withExtension: "txt") {
             if let startWords = try? String(contentsOf: startWordsURL) {
                 let allWords = startWords.components(separatedBy: "\n")
