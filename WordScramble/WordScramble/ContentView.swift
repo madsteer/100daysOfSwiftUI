@@ -37,6 +37,9 @@ struct ContentView: View {
                     }
                 }
             }
+            .toolbar {
+                Button("Start", action: startGame)
+            }
             .navigationTitle(rootWord)
             .onSubmit(addNewWord)
             .onAppear(perform: startGame)
@@ -51,6 +54,7 @@ struct ContentView: View {
     func addNewWord() {
         wordFieldIsFocused = true
         let answer = newWord.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !answer.isEmpty else { return }
         
         guard isLongEnough(word: answer) else {
             wordError(title: "Word too short", message: "Word needs to be 3 or more characters in length!")
