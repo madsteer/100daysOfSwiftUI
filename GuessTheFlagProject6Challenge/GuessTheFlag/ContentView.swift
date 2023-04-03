@@ -16,8 +16,10 @@ struct ContentView: View {
     @State private var numberOfQuestions = 0
     @State private var countries = [ "Estonia", "France", "Germany", "Ireland", "Italy", "Nigeria", "Poland", "Russia", "Spain", "UK", "US" ].shuffled()
     @State private var correctAnswer = Int.random(in: 0...2)
-    @State private var rotationAnimationAmounts = [ 0.0, 0.0, 0.0 ]
-    @State private var buttonOpacity = [ 1.0, 1.0, 1.0 ]
+    @State private var chosenFlag = -1
+    @State private var chosenRotationAmount = 0.0
+    @State private var unchosenRotationAmount = 0.0
+    @State private var opacityAmount = 1.0
     
     var body: some View {
         ZStack {
@@ -45,13 +47,11 @@ struct ContentView: View {
                     
                     ForEach(0..<3) { number in
                         Button {
+                            chosenFlag = number
                             withAnimation {
-                                rotationAnimationAmounts[number] += 360
-                                buttonOpacity.indices.forEach { index in
-                                    if (index != number) {
-                                        buttonOpacity[index] = 0.25
-                                    }
-                                }
+                                chosenRotationAmount += 360
+                                unchosenRotationAmount -= 360
+                                opacityAmount = 0.25
                             }
                             flagTapped(number)
                         } label: {
@@ -60,8 +60,13 @@ struct ContentView: View {
                                 .clipShape(RoundedRectangle(cornerRadius: 25))
                                 .shadow(radius: 5)
                         }
-                        .opacity(buttonOpacity[number])
-                        .rotation3DEffect(.degrees(rotationAnimationAmounts[number]), axis: (x: 0, y: 1, z: 0))
+                        .opacity(chosenFlag == number ? 1 : opacityAmount)
+                        .rotation3DEffect(
+                            .degrees(chosenFlag == number ? chosenRotationAmount : 0.0), axis: (x: 0, y: 1, z: 0)
+                        )
+                        .rotation3DEffect(
+                            .degrees(chosenFlag == number ? 0.0 : unchosenRotationAmount), axis: (x: 0, y: 0, z: 1)
+                        )
                     }
                 }
                 .frame(maxWidth: .infinity)
@@ -122,9 +127,11 @@ struct ContentView: View {
     }
     
     func askQuestion() {
-        buttonOpacity.indices.forEach { index in
-            buttonOpacity[index] = 1.0
-        }
+        chosenFlag = -1
+        chosenRotationAmount += 0.0
+        unchosenRotationAmount += 0.0
+        opacityAmount = 1.0
+
         countries.shuffle()
         correctAnswer = Int.random(in: 0...2)
     }
