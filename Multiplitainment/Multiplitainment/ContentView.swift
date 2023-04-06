@@ -11,6 +11,7 @@ struct Factor: Hashable {
     var multicand: Int
     var multiplier: Int
     var answer: Int
+    var guess: Int
 }
 
 struct ContentView: View {
@@ -62,7 +63,7 @@ struct ContentView: View {
                     }
                 }
             }
-        } else {
+        } else if factorIndex < factors.count {
             NavigationView {
                 VStack {
                     Spacer()
@@ -101,6 +102,41 @@ struct ContentView: View {
             } message: {
                 Text(answerMessage)
             }
+        } else {
+            NavigationView {
+                List {
+                    Section {
+                        Text("How'd you do?")
+                    }
+                    
+                    Section("Results") {
+                        ForEach(factors, id: \.self) { factor in
+                            Section("Problem") {
+                                Text("\(factor.multicand) x \(factor.multiplier)")
+                            }
+                            
+                            Section("Result") {
+                                HStack {
+                                    Text("Answer: \(factor.answer)")
+                                    
+                                    Spacer()
+                                    
+                                    Text("Guess: \(factor.guess)")
+                                }
+                            }
+                        }
+                    }
+                    
+                    Spacer()
+                    
+                    Section {
+                        Button("Play Again?") {
+                            resetGame()
+                        }
+                    }
+                }
+                .navigationTitle("Multiplitainment")
+            }
         }
     }
     
@@ -110,6 +146,7 @@ struct ContentView: View {
     }
     
     func checkAnswer() {
+        factors[factorIndex].guess = guess
         if guess == factors[factorIndex].answer {
             answerTitle = "Good Job!"
             answerMessage = "\(guess) is correct!"
@@ -125,7 +162,8 @@ struct ContentView: View {
             let factor = Factor(
                 multicand: Int.random(in: 1...multiplicationUpperBound),
                 multiplier: Int.random(in: 1...multiplicationUpperBound),
-                answer: -1
+                answer: -1,
+                guess: -1
             )
             factors.append(factor)
         }
@@ -135,6 +173,14 @@ struct ContentView: View {
         }
         
         hasGameStarted = true
+    }
+    
+    func resetGame() {
+        hasGameStarted = false
+        factors = [Factor]()
+        factorIndex = 0
+        guess = 0
+        multiplicationUpperBound = 2
     }
 }
 
