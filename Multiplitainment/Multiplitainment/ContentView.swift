@@ -15,9 +15,14 @@ struct Factor: Hashable {
 
 struct ContentView: View {
     @State private var hasGameStarted = false
+    @State private var showingResult = false
     @State private var multiplicationUpperBound = 2
     @State private var numberOfQuestionsToAsk = numberOfQuestionsChoicesStatic[0]
     @State private var factors = [Factor]()
+    @State private var factorIndex = 0
+    @State private var guess = 0
+    @State private var answerTitle = ""
+    @State private var answerMessage = ""
     
     
     private static let numberOfQuestionsChoicesStatic = [ 5, 10, 20 ]
@@ -58,30 +63,61 @@ struct ContentView: View {
                 }
             }
         } else {
-            NavigationStack {
-                List {
-                    HStack {
-                        Spacer()
-                        
-                        Button("Reset") {
-                            hasGameStarted = false
+            NavigationView {
+                VStack {
+                    Spacer()
+
+                    Section("Current Problem") {
+//                        Text("What is")
+//                            .font(.title)
+                        Text("What is \(factors[factorIndex].multicand) X \(factors[factorIndex].multiplier)?")
+                            .font(.title)
+                    }
+                    .font(.largeTitle)
+
+                    Spacer()
+
+                    Section {
+                        HStack {
+                            Text("Answer: ")
+                                .font(.title)
+
+                            TextField("hi ", text: Binding(
+                                get: { String(guess) },
+                                set: { guess = Int($0) ?? 0}
+                            ))
+                            .keyboardType(.numberPad)
+                            .font(.title)
                         }
                     }
-                    
-                    Section {
-                        Text("Here's what your questions would be")
-                    }
-                    .font(.title)
-                    
-                    Section {
-                        ForEach(factors, id: \.self) { factor in
-                            Text("What is \(factor.multicand) x \(factor.multiplier) ? (\(factor.answer))")
-                        }
-                    }
+
+                    Spacer()
                 }
                 .navigationTitle("Multiplitainment")
+                .onSubmit { checkAnswer() }
+            }
+            .alert(answerTitle, isPresented: $showingResult) {
+                Button("Continue", action: advanceQuestion)
+            } message: {
+                Text(answerMessage)
             }
         }
+    }
+    
+    func advanceQuestion() {
+        factorIndex += 1
+        guess = 0
+    }
+    
+    func checkAnswer() {
+        if guess == factors[factorIndex].answer {
+            answerTitle = "Good Job!"
+            answerMessage = "\(guess) is correct!"
+        } else {
+            answerTitle = "Not Quite"
+            answerMessage = "Sorry, but the correct answer is \(factors[factorIndex].answer)"
+        }
+        showingResult = true
     }
     
     func startGame() {
@@ -97,9 +133,6 @@ struct ContentView: View {
         for index in 0..<factors.count {
             factors[index].answer = factors[index].multicand * factors[index].multiplier
         }
-//        ForEach(factors, id: \.self) { factor in
-//            factor.answer = $0.multicand * $0.multiplier
-//        }
         
         hasGameStarted = true
     }
