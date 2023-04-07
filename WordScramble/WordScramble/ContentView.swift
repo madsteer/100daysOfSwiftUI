@@ -26,6 +26,7 @@ struct ContentView: View {
                         .font(.largeTitle)
                 }
                 .font(.largeTitle)
+                
                 Section {
                     TextField("Enter your word", text: $newWord)
                         .autocapitalization(.none)

@@ -105,29 +105,23 @@ struct ContentView: View {
                 
                 if hasGameStarted && factorIndex >= factors.count {
                     List {
-                        Section {
+                        Section("Results") {
                             Text("How'd you do?")
                         }
-                        
-                        Section("Results") {
-                            ForEach(factors, id: \.self) { factor in
-                                Section("Problem") {
-                                    Text("\(factor.multicand) x \(factor.multiplier)")
-                                }
+
+                        ForEach(factors, id: \.self) { factor in
+                            Section {
+                                Text("Problem: \(factor.multicand) x \(factor.multiplier)")
                                 
-                                Section("Result") {
-                                    HStack {
-                                        Text("Answer: \(factor.answer)")
-                                        
-                                        Spacer()
-                                        
-                                        Text("Guess: \(factor.guess)")
-                                    }
+                                HStack {
+                                    Text("Answer: \(factor.answer)")
+                                    
+                                    Spacer()
+                                    
+                                    Text("Guess: \(factor.guess)")
                                 }
                             }
                         }
-                        
-                        Spacer()
                         
                         Section {
                             Button("Play Again?") {
