@@ -70,8 +70,6 @@ struct ContentView: View {
                         Spacer()
                         
                         Section("Current Problem") {
-                            //                        Text("What is")
-                            //                            .font(.title)
                             Text("What is \(factors[factorIndex].multicand) X \(factors[factorIndex].multiplier)?")
                                 .font(.title)
                         }
@@ -104,31 +102,10 @@ struct ContentView: View {
                 }
                 
                 if hasGameStarted && factorIndex >= factors.count {
-                    List {
-                        Section("Results") {
-                            Text("How'd you do?")
-                        }
-
-                        ForEach(factors, id: \.self) { factor in
-                            Section {
-                                Text("Problem: \(factor.multicand) x \(factor.multiplier)")
-                                
-                                HStack {
-                                    Text("Answer: \(factor.answer)")
-                                    
-                                    Spacer()
-                                    
-                                    Text("Guess: \(factor.guess)")
-                                }
-                            }
-                        }
-                        
-                        Section {
-                            Button("Play Again?") {
-                                resetGame()
-                            }
-                        }
-                    }
+                    ResultsListView(
+                      factors: factors,
+                      resetGame: { self.resetGame() }
+                    )
                 }
             }
             .navigationTitle("Multiplitainment")
