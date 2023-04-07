@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-
 struct ResultsListView: View {
     var factors: [Factor]
     var resetGame: () -> Void

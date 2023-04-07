@@ -17,8 +17,8 @@ struct Factor: Hashable {
 struct ContentView: View {
     @State private var hasGameStarted = false
     @State private var showingResult = false
-    @State private var multiplicationUpperBound = 2
-    @State private var numberOfQuestionsToAsk = numberOfQuestionsChoicesStatic[0]
+    @State public var multiplicationUpperBound = 2
+    @State public var numberOfQuestionsToAsk = numberOfQuestionsChoicesStatic[0]
     @State private var factors = [Factor]()
     @State private var factorIndex = 0
     @State private var guess = 0
@@ -28,41 +28,17 @@ struct ContentView: View {
     
     private static let numberOfQuestionsChoicesStatic = [ 5, 10, 20 ]
     private let numberOfQuestionsChoices = numberOfQuestionsChoicesStatic
+    
     var body: some View {
         NavigationStack {
             Group {
                 if !hasGameStarted {
-                    Form {
-                        Section {
-                            Stepper("From 2 - \(multiplicationUpperBound)", value: $multiplicationUpperBound, in: 2...12, step: 1)
-                        } header: {
-                            Text("Desired maximum Multipliers")
-                        }
-                        
-                        Section {
-                            Picker("\(numberOfQuestionsToAsk) Questions", selection: $numberOfQuestionsToAsk) {
-                                ForEach(numberOfQuestionsChoices, id: \.self) {
-                                    Text($0, format: .number)
-                                }
-                            }
-                            .pickerStyle(.segmented)
-                        } header: {
-                            Text("How many questions do you want to be asked?")
-                        }
-                        .navigationTitle("Multiplitainment")
-                        
-                        Section {
-                            HStack {
-                                Text("Ready to start?")
-                                
-                                Spacer()
-                                
-                                Button("Play") {
-                                    startGame()
-                                }
-                            }
-                        }
-                    }
+                    SetUpGameView(
+                            multiplicationUpperBound: $multiplicationUpperBound,
+                            numberOfQuestionsToAsk: $numberOfQuestionsToAsk,
+                            numberOfQuestionsChoices: numberOfQuestionsChoices,
+                            startGame: { self.startGame() }
+                        )
                 }
                 
                 if hasGameStarted && factorIndex < factors.count {
