@@ -16,12 +16,12 @@ struct Factor: Hashable {
 
 struct ContentView: View {
     @State private var hasGameStarted = false
-    @State private var showingResult = false
+    @State public var showingResult = false
     @State public var multiplicationUpperBound = 2
     @State public var numberOfQuestionsToAsk = numberOfQuestionsChoicesStatic[0]
     @State private var factors = [Factor]()
     @State private var factorIndex = 0
-    @State private var guess = 0
+    @State public var guess = 0
     @State private var answerTitle = ""
     @State private var answerMessage = ""
     
@@ -42,39 +42,16 @@ struct ContentView: View {
                 }
                 
                 if hasGameStarted && factorIndex < factors.count {
-                    VStack {
-                        Spacer()
-                        
-                        Section("Current Problem") {
-                            Text("What is \(factors[factorIndex].multicand) X \(factors[factorIndex].multiplier)?")
-                                .font(.title)
-                        }
-                        .font(.largeTitle)
-                        
-                        Spacer()
-                        
-                        Section {
-                            HStack {
-                                Text("Answer: ")
-                                    .font(.title)
-                                
-                                TextField("hi ", text: Binding(
-                                    get: { String(guess) },
-                                    set: { guess = Int($0) ?? 0}
-                                ))
-                                .keyboardType(.numberPad)
-                                .font(.title)
-                            }
-                        }
-                        
-                        Spacer()
-                    }
-                    .onSubmit { checkAnswer() }
-                    .alert(answerTitle, isPresented: $showingResult) {
-                        Button("Continue", action: advanceQuestion)
-                    } message: {
-                        Text(answerMessage)
-                    }
+                    PlayGameView(
+                        showingResult: $showingResult,
+                        answerMessage: answerMessage,
+                        answerTitle: answerMessage,
+                        factors: factors,
+                        factorIndex: factorIndex,
+                        guess: $guess,
+                        advanceQuestion: { self.advanceQuestion() },
+                        checkAnswer: { self.checkAnswer() }
+                    )
                 }
                 
                 if hasGameStarted && factorIndex >= factors.count {

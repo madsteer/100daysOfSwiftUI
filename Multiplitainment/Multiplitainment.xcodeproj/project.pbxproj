@@ -13,6 +13,7 @@
 		7D41DC4A29DE12F50048BC65 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D41DC4929DE12F50048BC65 /* Preview Assets.xcassets */; };
 		7D6E0C5129E0AAE40053CF3A /* ResultsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6E0C5029E0AAE40053CF3A /* ResultsListView.swift */; };
 		7D6E0C5329E0B0780053CF3A /* SetUpGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6E0C5229E0B0780053CF3A /* SetUpGameView.swift */; };
+		7D6E0C5529E0BF190053CF3A /* PlayGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6E0C5429E0BF190053CF3A /* PlayGameView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		7D41DC4929DE12F50048BC65 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		7D6E0C5029E0AAE40053CF3A /* ResultsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsListView.swift; sourceTree = "<group>"; };
 		7D6E0C5229E0B0780053CF3A /* SetUpGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetUpGameView.swift; sourceTree = "<group>"; };
+		7D6E0C5429E0BF190053CF3A /* PlayGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayGameView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,8 +60,9 @@
 			children = (
 				7D41DC4129DE12F40048BC65 /* MultiplitainmentApp.swift */,
 				7D41DC4329DE12F40048BC65 /* ContentView.swift */,
-				7D6E0C5029E0AAE40053CF3A /* ResultsListView.swift */,
 				7D6E0C5229E0B0780053CF3A /* SetUpGameView.swift */,
+				7D6E0C5429E0BF190053CF3A /* PlayGameView.swift */,
+				7D6E0C5029E0AAE40053CF3A /* ResultsListView.swift */,
 				7D41DC4529DE12F50048BC65 /* Assets.xcassets */,
 				7D41DC4729DE12F50048BC65 /* Multiplitainment.entitlements */,
 				7D41DC4829DE12F50048BC65 /* Preview Content */,
@@ -149,6 +152,7 @@
 				7D41DC4429DE12F40048BC65 /* ContentView.swift in Sources */,
 				7D6E0C5129E0AAE40053CF3A /* ResultsListView.swift in Sources */,
 				7D41DC4229DE12F40048BC65 /* MultiplitainmentApp.swift in Sources */,
+				7D6E0C5529E0BF190053CF3A /* PlayGameView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
