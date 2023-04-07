@@ -29,116 +29,118 @@ struct ContentView: View {
     private static let numberOfQuestionsChoicesStatic = [ 5, 10, 20 ]
     private let numberOfQuestionsChoices = numberOfQuestionsChoicesStatic
     var body: some View {
-        if !hasGameStarted {
-            NavigationStack {
-                Form {
-                    Section {
-                        Stepper("From 2 - \(multiplicationUpperBound)", value: $multiplicationUpperBound, in: 2...12, step: 1)
-                    } header: {
-                        Text("Desired maximum Multipliers")
-                    }
-                    
-                    Section {
-                        Picker("\(numberOfQuestionsToAsk) Questions", selection: $numberOfQuestionsToAsk) {
-                            ForEach(numberOfQuestionsChoices, id: \.self) {
-                                Text($0, format: .number)
-                            }
+        NavigationStack {
+            Group {
+                if !hasGameStarted {
+                    Form {
+                        Section {
+                            Stepper("From 2 - \(multiplicationUpperBound)", value: $multiplicationUpperBound, in: 2...12, step: 1)
+                        } header: {
+                            Text("Desired maximum Multipliers")
                         }
-                        .pickerStyle(.segmented)
-                    } header: {
-                        Text("How many questions do you want to be asked?")
-                    }
-                    .navigationTitle("Multiplitainment")
-                    
-                    Section {
-                        HStack {
-                            Text("Ready to start?")
-                            
-                            Spacer()
-                            
-                            Button("Play") {
-                                startGame()
+                        
+                        Section {
+                            Picker("\(numberOfQuestionsToAsk) Questions", selection: $numberOfQuestionsToAsk) {
+                                ForEach(numberOfQuestionsChoices, id: \.self) {
+                                    Text($0, format: .number)
+                                }
                             }
+                            .pickerStyle(.segmented)
+                        } header: {
+                            Text("How many questions do you want to be asked?")
                         }
-                    }
-                }
-            }
-        } else if factorIndex < factors.count {
-            NavigationView {
-                VStack {
-                    Spacer()
-
-                    Section("Current Problem") {
-//                        Text("What is")
-//                            .font(.title)
-                        Text("What is \(factors[factorIndex].multicand) X \(factors[factorIndex].multiplier)?")
-                            .font(.title)
-                    }
-                    .font(.largeTitle)
-
-                    Spacer()
-
-                    Section {
-                        HStack {
-                            Text("Answer: ")
-                                .font(.title)
-
-                            TextField("hi ", text: Binding(
-                                get: { String(guess) },
-                                set: { guess = Int($0) ?? 0}
-                            ))
-                            .keyboardType(.numberPad)
-                            .font(.title)
-                        }
-                    }
-
-                    Spacer()
-                }
-                .navigationTitle("Multiplitainment")
-                .onSubmit { checkAnswer() }
-            }
-            .alert(answerTitle, isPresented: $showingResult) {
-                Button("Continue", action: advanceQuestion)
-            } message: {
-                Text(answerMessage)
-            }
-        } else {
-            NavigationView {
-                List {
-                    Section {
-                        Text("How'd you do?")
-                    }
-                    
-                    Section("Results") {
-                        ForEach(factors, id: \.self) { factor in
-                            Section("Problem") {
-                                Text("\(factor.multicand) x \(factor.multiplier)")
-                            }
-                            
-                            Section("Result") {
-                                HStack {
-                                    Text("Answer: \(factor.answer)")
-                                    
-                                    Spacer()
-                                    
-                                    Text("Guess: \(factor.guess)")
+                        .navigationTitle("Multiplitainment")
+                        
+                        Section {
+                            HStack {
+                                Text("Ready to start?")
+                                
+                                Spacer()
+                                
+                                Button("Play") {
+                                    startGame()
                                 }
                             }
                         }
                     }
-                    
-                    Spacer()
-                    
-                    Section {
-                        Button("Play Again?") {
-                            resetGame()
+                }
+                
+                if hasGameStarted && factorIndex < factors.count {
+                    VStack {
+                        Spacer()
+                        
+                        Section("Current Problem") {
+                            //                        Text("What is")
+                            //                            .font(.title)
+                            Text("What is \(factors[factorIndex].multicand) X \(factors[factorIndex].multiplier)?")
+                                .font(.title)
+                        }
+                        .font(.largeTitle)
+                        
+                        Spacer()
+                        
+                        Section {
+                            HStack {
+                                Text("Answer: ")
+                                    .font(.title)
+                                
+                                TextField("hi ", text: Binding(
+                                    get: { String(guess) },
+                                    set: { guess = Int($0) ?? 0}
+                                ))
+                                .keyboardType(.numberPad)
+                                .font(.title)
+                            }
+                        }
+                        
+                        Spacer()
+                    }
+                    .onSubmit { checkAnswer() }
+                    .alert(answerTitle, isPresented: $showingResult) {
+                        Button("Continue", action: advanceQuestion)
+                    } message: {
+                        Text(answerMessage)
+                    }
+                }
+                
+                if hasGameStarted && factorIndex >= factors.count {
+                    List {
+                        Section {
+                            Text("How'd you do?")
+                        }
+                        
+                        Section("Results") {
+                            ForEach(factors, id: \.self) { factor in
+                                Section("Problem") {
+                                    Text("\(factor.multicand) x \(factor.multiplier)")
+                                }
+                                
+                                Section("Result") {
+                                    HStack {
+                                        Text("Answer: \(factor.answer)")
+                                        
+                                        Spacer()
+                                        
+                                        Text("Guess: \(factor.guess)")
+                                    }
+                                }
+                            }
+                        }
+                        
+                        Spacer()
+                        
+                        Section {
+                            Button("Play Again?") {
+                                resetGame()
+                            }
                         }
                     }
                 }
-                .navigationTitle("Multiplitainment")
             }
+            .navigationTitle("Multiplitainment")
         }
     }
+
     
     func advanceQuestion() {
         factorIndex += 1
