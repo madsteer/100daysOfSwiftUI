@@ -14,8 +14,6 @@ struct AddView: View {
     @State private var name = ""
     @State private var type = "Personal"
     @State private var amount = 0.0
-    
-    var buildLists: () -> Void
         
     let types = [ "Business", "Personal" ]
     
@@ -38,7 +36,6 @@ struct AddView: View {
             .toolbar {
                 Button("Save") {
                     expenses.items.append(ExpenseItem(name: name, type: type, amount: amount))
-                    buildLists()
                     dismiss()
                 }
             }
@@ -52,6 +49,6 @@ func mock() {
 
 struct AddView_Previews: PreviewProvider {
     static var previews: some View {
-        AddView(expenses: Expenses(), buildLists: mock)
+        AddView(expenses: Expenses())
     }
 }

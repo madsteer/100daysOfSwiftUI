@@ -9,8 +9,6 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject var expenses = Expenses()
-    @State private var personalExpenses = [ExpenseItem]()
-    @State private var businessExpenses = [ExpenseItem]()
     @State private var showingAddExpense = false
     
     var body: some View {
@@ -20,7 +18,7 @@ struct ContentView: View {
                     Text("Personal")
                         .font(.largeTitle)
                     List {
-                        ForEach(personalExpenses) { item in
+                        ForEach(expenses.personalExpenses) { item in
                             HStack {
                                 VStack(alignment: .leading) {
                                     Text(item.name)
@@ -47,7 +45,7 @@ struct ContentView: View {
                     Text("Business")
                         .font(.largeTitle)
                     List {
-                        ForEach(businessExpenses) { item in
+                        ForEach(expenses.businessExpenses) { item in
                             HStack {
                                 VStack(alignment: .leading) {
                                     Text(item.name)
@@ -78,39 +76,30 @@ struct ContentView: View {
             }
             .sheet(isPresented: $showingAddExpense) {
                 AddView(
-                    expenses: expenses,
-                    buildLists: { self.buildLists() }
+                    expenses: expenses
                 )
             }
-            .onAppear(perform: buildLists)
         }
-    }
-    
-    func buildLists() {
-        personalExpenses = expenses.items.expenseTypeFilter(desired: "Personal")
-        businessExpenses = expenses.items.expenseTypeFilter(desired: "Business")
     }
     
     func removePersonalItems(at offsets: IndexSet) {
         for offset in offsets {
             if let index = expenses.items.firstIndex(
-                where: { $0.id == personalExpenses[offset].id }
+                where: { $0.id == expenses.personalExpenses[offset].id }
             ) {
                 expenses.items.remove(at: index)
             }
         }
-        buildLists()
     }
     
     func removeBusinessItems(at offsets: IndexSet) {
         for offset in offsets {
             if let index = expenses.items.firstIndex(
-                where: { $0.id == businessExpenses[offset].id }
+                where: { $0.id == expenses.businessExpenses[offset].id }
             ) {
                 expenses.items.remove(at: index)
             }
         }
-        buildLists()
     }
 }
 
