@@ -92,31 +92,25 @@ struct ContentView: View {
     }
     
     func removePersonalItems(at offsets: IndexSet) {
-        let items = offsets.map { self.personalExpenses[$0].id }
-        removeItems(for: items)
+        for offset in offsets {
+            if let index = expenses.items.firstIndex(
+                where: { $0.id == personalExpenses[offset].id }
+            ) {
+                expenses.items.remove(at: index)
+            }
+        }
         buildLists()
     }
     
     func removeBusinessItems(at offsets: IndexSet) {
-        let items = offsets.map { self.businessExpenses[$0].id }
-        removeItems(for: items)
-        buildLists()
-    }
-    
-    func removeItems(for uuids: [UUID]) {
-        var indices = [Int]()
-        
-        uuids.forEach { uuid in
-            for (index, element) in expenses.items.enumerated() {
-                if element.id == uuid {
-                    indices.append(index)
-                }
+        for offset in offsets {
+            if let index = expenses.items.firstIndex(
+                where: { $0.id == businessExpenses[offset].id }
+            ) {
+                expenses.items.remove(at: index)
             }
         }
-        
-        indices.forEach { index in
-            expenses.items.remove(at: index)
-        }
+        buildLists()
     }
 }
 
