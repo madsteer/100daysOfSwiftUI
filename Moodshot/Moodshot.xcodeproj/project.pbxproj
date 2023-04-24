@@ -15,6 +15,7 @@
 		7DC8ABF129F70EB400CA9DEF /* missions.json in Resources */ = {isa = PBXBuildFile; fileRef = 7DC8ABEF29F70EB400CA9DEF /* missions.json */; };
 		7DC8ABF329F70F2500CA9DEF /* Astronaut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DC8ABF229F70F2500CA9DEF /* Astronaut.swift */; };
 		7DC8ABF529F70F8000CA9DEF /* Bundle-decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DC8ABF429F70F8000CA9DEF /* Bundle-decodable.swift */; };
+		7DC8ABF729F71DD400CA9DEF /* Mission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DC8ABF629F71DD400CA9DEF /* Mission.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		7DC8ABEF29F70EB400CA9DEF /* missions.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = missions.json; sourceTree = "<group>"; };
 		7DC8ABF229F70F2500CA9DEF /* Astronaut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Astronaut.swift; sourceTree = "<group>"; };
 		7DC8ABF429F70F8000CA9DEF /* Bundle-decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle-decodable.swift"; sourceTree = "<group>"; };
+		7DC8ABF629F71DD400CA9DEF /* Mission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mission.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				7D1810E929F1D3780083EEBA /* MoodshotApp.swift */,
 				7D1810EB29F1D3780083EEBA /* ContentView.swift */,
 				7DC8ABF229F70F2500CA9DEF /* Astronaut.swift */,
+				7DC8ABF629F71DD400CA9DEF /* Mission.swift */,
 				7DC8ABF429F70F8000CA9DEF /* Bundle-decodable.swift */,
 				7DC8ABEE29F70EB400CA9DEF /* astronauts.json */,
 				7DC8ABEF29F70EB400CA9DEF /* missions.json */,
@@ -156,6 +159,7 @@
 				7D1810EC29F1D3780083EEBA /* ContentView.swift in Sources */,
 				7DC8ABF329F70F2500CA9DEF /* Astronaut.swift in Sources */,
 				7D1810EA29F1D3780083EEBA /* MoodshotApp.swift in Sources */,
+				7DC8ABF729F71DD400CA9DEF /* Mission.swift in Sources */,
 				7DC8ABF529F70F8000CA9DEF /* Bundle-decodable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
