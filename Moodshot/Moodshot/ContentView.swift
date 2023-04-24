@@ -7,29 +7,39 @@
 
 import SwiftUI
 
-struct CustomText: View {
-    let text: String
-    var body: some View {
-        Text(text)
-    }
-    
-    init(_ text: String) {
-        print("creating a new CustomText")
-        self.text = text
-    }
+struct User: Codable {
+    let name: String
+    let address: Address
+}
+
+struct Address: Codable {
+    let street: String
+    let city: String
 }
 
 struct ContentView: View {
     var body: some View {
-        NavigationView {
-            List(0..<100) { row in
-                NavigationLink {
-                    Text("Detailed \(row)")
-                } label: {
-                    Text("Row \(row)")
+        Button("Decode JSON") {
+            print("decode button pressed")
+            let input = """
+            {
+                "name": "Taylor Swift",
+                "address":  {
+                    "street": " 555 Taylor Swift Ave",
+                    "city": "Nashville"
                 }
             }
-            .navigationTitle("SwiftUI")
+            """
+            let data = Data(input.utf8)
+//            do {
+//                let user = try JSONDecoder().decode(User.self, from: data)
+//                print(user.address.street)
+//            } catch {
+//                print("some kind of error: \(error)")
+//            }
+            if let user = try? JSONDecoder().decode(User.self, from: data) {
+                print(user.address.street)
+            }
         }
     }
 }
