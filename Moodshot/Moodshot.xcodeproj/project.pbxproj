@@ -16,6 +16,7 @@
 		7DC8ABF329F70F2500CA9DEF /* Astronaut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DC8ABF229F70F2500CA9DEF /* Astronaut.swift */; };
 		7DC8ABF529F70F8000CA9DEF /* Bundle-decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DC8ABF429F70F8000CA9DEF /* Bundle-decodable.swift */; };
 		7DC8ABF729F71DD400CA9DEF /* Mission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DC8ABF629F71DD400CA9DEF /* Mission.swift */; };
+		7DC8ABF929F7244D00CA9DEF /* Color-Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DC8ABF829F7244D00CA9DEF /* Color-Theme.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		7DC8ABF229F70F2500CA9DEF /* Astronaut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Astronaut.swift; sourceTree = "<group>"; };
 		7DC8ABF429F70F8000CA9DEF /* Bundle-decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle-decodable.swift"; sourceTree = "<group>"; };
 		7DC8ABF629F71DD400CA9DEF /* Mission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mission.swift; sourceTree = "<group>"; };
+		7DC8ABF829F7244D00CA9DEF /* Color-Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color-Theme.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 				7DC8ABF229F70F2500CA9DEF /* Astronaut.swift */,
 				7DC8ABF629F71DD400CA9DEF /* Mission.swift */,
 				7DC8ABF429F70F8000CA9DEF /* Bundle-decodable.swift */,
+				7DC8ABF829F7244D00CA9DEF /* Color-Theme.swift */,
 				7DC8ABEE29F70EB400CA9DEF /* astronauts.json */,
 				7DC8ABEF29F70EB400CA9DEF /* missions.json */,
 				7D1810ED29F1D3790083EEBA /* Assets.xcassets */,
@@ -157,6 +160,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7D1810EC29F1D3780083EEBA /* ContentView.swift in Sources */,
+				7DC8ABF929F7244D00CA9DEF /* Color-Theme.swift in Sources */,
 				7DC8ABF329F70F2500CA9DEF /* Astronaut.swift in Sources */,
 				7D1810EA29F1D3780083EEBA /* MoodshotApp.swift in Sources */,
 				7DC8ABF729F71DD400CA9DEF /* Mission.swift in Sources */,
