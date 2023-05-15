@@ -12,6 +12,9 @@
 		7D1810EE29F1D3790083EEBA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D1810ED29F1D3790083EEBA /* Assets.xcassets */; };
 		7D1810F229F1D3790083EEBA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D1810F129F1D3790083EEBA /* Preview Assets.xcassets */; };
 		7D46554D2A00643A00B08EA3 /* AstronautView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D46554C2A00643A00B08EA3 /* AstronautView.swift */; };
+		7D66A6802A12C4C100721E38 /* AstronautScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D66A67F2A12C4C100721E38 /* AstronautScrollView.swift */; };
+		7D66A6822A12C56B00721E38 /* CrewMember.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D66A6812A12C56B00721E38 /* CrewMember.swift */; };
+		7D66A6842A12C76900721E38 /* DividerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D66A6832A12C76900721E38 /* DividerView.swift */; };
 		7DC081D52A0059F4002E8BDE /* MissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DC081D42A0059F4002E8BDE /* MissionView.swift */; };
 		7DC8ABF029F70EB400CA9DEF /* astronauts.json in Resources */ = {isa = PBXBuildFile; fileRef = 7DC8ABEE29F70EB400CA9DEF /* astronauts.json */; };
 		7DC8ABF129F70EB400CA9DEF /* missions.json in Resources */ = {isa = PBXBuildFile; fileRef = 7DC8ABEF29F70EB400CA9DEF /* missions.json */; };
@@ -29,6 +32,9 @@
 		7D1810EF29F1D3790083EEBA /* Moodshot.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Moodshot.entitlements; sourceTree = "<group>"; };
 		7D1810F129F1D3790083EEBA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		7D46554C2A00643A00B08EA3 /* AstronautView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstronautView.swift; sourceTree = "<group>"; };
+		7D66A67F2A12C4C100721E38 /* AstronautScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstronautScrollView.swift; sourceTree = "<group>"; };
+		7D66A6812A12C56B00721E38 /* CrewMember.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrewMember.swift; sourceTree = "<group>"; };
+		7D66A6832A12C76900721E38 /* DividerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DividerView.swift; sourceTree = "<group>"; };
 		7DC081D42A0059F4002E8BDE /* MissionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionView.swift; sourceTree = "<group>"; };
 		7DC8ABEE29F70EB400CA9DEF /* astronauts.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = astronauts.json; sourceTree = "<group>"; };
 		7DC8ABEF29F70EB400CA9DEF /* missions.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = missions.json; sourceTree = "<group>"; };
@@ -71,9 +77,12 @@
 				7D1810E929F1D3780083EEBA /* MoodshotApp.swift */,
 				7D1810EB29F1D3780083EEBA /* ContentView.swift */,
 				7DC081D42A0059F4002E8BDE /* MissionView.swift */,
+				7D66A6832A12C76900721E38 /* DividerView.swift */,
+				7D66A67F2A12C4C100721E38 /* AstronautScrollView.swift */,
 				7D46554C2A00643A00B08EA3 /* AstronautView.swift */,
 				7DC8ABF229F70F2500CA9DEF /* Astronaut.swift */,
 				7DC8ABF629F71DD400CA9DEF /* Mission.swift */,
+				7D66A6812A12C56B00721E38 /* CrewMember.swift */,
 				7DC8ABF429F70F8000CA9DEF /* Bundle-decodable.swift */,
 				7DC8ABF829F7244D00CA9DEF /* Color-Theme.swift */,
 				7DC8ABEE29F70EB400CA9DEF /* astronauts.json */,
@@ -165,9 +174,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D66A6842A12C76900721E38 /* DividerView.swift in Sources */,
 				7DC081D52A0059F4002E8BDE /* MissionView.swift in Sources */,
 				7D1810EC29F1D3780083EEBA /* ContentView.swift in Sources */,
 				7D46554D2A00643A00B08EA3 /* AstronautView.swift in Sources */,
+				7D66A6802A12C4C100721E38 /* AstronautScrollView.swift in Sources */,
+				7D66A6822A12C56B00721E38 /* CrewMember.swift in Sources */,
 				7DC8ABF929F7244D00CA9DEF /* Color-Theme.swift in Sources */,
 				7DC8ABF329F70F2500CA9DEF /* Astronaut.swift in Sources */,
 				7D1810EA29F1D3780083EEBA /* MoodshotApp.swift in Sources */,
