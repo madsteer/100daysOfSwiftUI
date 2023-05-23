@@ -7,11 +7,44 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct ColorCyclingCircle: View {
+    var amount = 0.0
+    var steps = 100
+    
     var body: some View {
-        Capsule()
-            .strokeBorder(ImagePaint(image: Image("Example"), sourceRect: CGRect(x: 0, y: 0.25, width: 1, height: 0.5), scale: 0.3), lineWidth: 20)
-            .frame(width: 300, height: 20)
+        ZStack {
+            ForEach(0..<steps, id: \.self) { value in
+                Circle()
+                    .inset(by: Double(value))
+                    .strokeBorder(
+                        LinearGradient(gradient: Gradient(colors: [ color(for: value, brightness: 1), color(for: value, brightness: 0.5)]), startPoint: .top, endPoint: .bottom),
+                        lineWidth: 2
+                    )
+            }
+        }
+        .drawingGroup() // run offscreen using Metal instead of CoreAnimation: don't use until you have an actual performance problem!!!
+    }
+    
+    func color(for value: Int, brightness: Double) -> Color {
+        var targetHue = Double(value) / Double(steps) + amount
+        
+        if targetHue > 1 {
+            targetHue -= 1
+        }
+        
+        return Color(hue: targetHue, saturation: 1, brightness: brightness)
+    }
+}
+struct ContentView: View {
+    @State private var colorCycle = 0.0
+    
+    var body: some View {
+        VStack {
+            ColorCyclingCircle(amount: colorCycle)
+                .frame(width: 300, height: 300)
+            
+            Slider(value: $colorCycle)
+        }
     }
 }
 
