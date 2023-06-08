@@ -7,29 +7,6 @@
 
 import SwiftUI
 
-struct Triangle: Shape {
-//    var sides = 3
-//    var desiredCenter: CGPoint?
-    
-    func path(in rect: CGRect) -> Path {
-        let firstCorner = CGPoint(x: rect.midX, y: rect.minY)
-        let secondCorner = CGPoint(
-            x: rect.maxX - (rect.midX / 2),
-            y: rect.midY - (rect.midY / 2)
-        )
-        let thirdCorner = CGPoint(x: rect.midX / 2, y: rect.midY / 2)
-        
-        var path = Path()
-        
-        path.move(to: firstCorner)
-        path.addLine(to: secondCorner)
-        path.addLine(to: thirdCorner)
-        path.addLine(to: firstCorner)
-        
-        return path
-    }
-}
-
 struct Arrow: Shape {
     func path(in rect: CGRect) -> Path {
         let arrowTip = CGPoint(x: rect.midX, y: rect.minY)
@@ -66,11 +43,23 @@ struct Arrow: Shape {
 
 
 struct ContentView: View {
+    @State private var lineWidth: CGFloat = 10.0
    
+    var animatableData: Double {
+        get { lineWidth }
+        set { lineWidth = newValue }
+    }
+    
     var body: some View {
         Arrow()
-            .stroke(.red, style: StrokeStyle(lineWidth: 10, lineCap: .round, lineJoin: .round))
+            .stroke(.red, style: StrokeStyle(lineWidth: lineWidth, lineCap: .round, lineJoin: .round))
             .frame(width: 300, height: 600)
+            .onTapGesture {
+                withAnimation(.easeInOut(duration: 3)) {
+                    lineWidth = Double.random(in: 1...20)
+                    print("I'm here.")
+                }
+            }
     }
 }
 
