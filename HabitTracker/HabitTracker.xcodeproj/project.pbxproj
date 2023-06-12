@@ -14,6 +14,8 @@
 		7DE1F2DD2A369A7900B6254C /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DE1F2DC2A369A7900B6254C /* Activity.swift */; };
 		7DE1F2DF2A369AF200B6254C /* Activities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DE1F2DE2A369AF200B6254C /* Activities.swift */; };
 		7DF154D02A3767990007E928 /* AddActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DF154CF2A3767990007E928 /* AddActivityView.swift */; };
+		7DF154D22A3794240007E928 /* ActivityDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DF154D12A3794240007E928 /* ActivityDetailView.swift */; };
+		7DF154D42A37A8FB0007E928 /* Color-Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DF154D32A37A8FB0007E928 /* Color-Theme.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		7DE1F2DC2A369A7900B6254C /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
 		7DE1F2DE2A369AF200B6254C /* Activities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activities.swift; sourceTree = "<group>"; };
 		7DF154CF2A3767990007E928 /* AddActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddActivityView.swift; sourceTree = "<group>"; };
+		7DF154D12A3794240007E928 /* ActivityDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityDetailView.swift; sourceTree = "<group>"; };
+		7DF154D32A37A8FB0007E928 /* Color-Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color-Theme.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,9 +64,11 @@
 			children = (
 				7DE1F2C92A36970500B6254C /* HabitTrackerApp.swift */,
 				7DE1F2CB2A36970500B6254C /* ContentView.swift */,
+				7DF154D12A3794240007E928 /* ActivityDetailView.swift */,
 				7DF154CF2A3767990007E928 /* AddActivityView.swift */,
 				7DE1F2DC2A369A7900B6254C /* Activity.swift */,
 				7DE1F2DE2A369AF200B6254C /* Activities.swift */,
+				7DF154D32A37A8FB0007E928 /* Color-Theme.swift */,
 				7DE1F2CD2A36970700B6254C /* Assets.xcassets */,
 				7DE1F2CF2A36970700B6254C /* HabitTracker.entitlements */,
 				7DE1F2D02A36970700B6254C /* Preview Content */,
@@ -150,6 +156,8 @@
 			files = (
 				7DE1F2CC2A36970500B6254C /* ContentView.swift in Sources */,
 				7DE1F2CA2A36970500B6254C /* HabitTrackerApp.swift in Sources */,
+				7DF154D42A37A8FB0007E928 /* Color-Theme.swift in Sources */,
+				7DF154D22A3794240007E928 /* ActivityDetailView.swift in Sources */,
 				7DE1F2DD2A369A7900B6254C /* Activity.swift in Sources */,
 				7DF154D02A3767990007E928 /* AddActivityView.swift in Sources */,
 				7DE1F2DF2A369AF200B6254C /* Activities.swift in Sources */,

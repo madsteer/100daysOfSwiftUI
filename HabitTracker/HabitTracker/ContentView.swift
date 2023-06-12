@@ -16,12 +16,17 @@ struct ContentView: View {
             VStack {
                 List {
                     ForEach(activities.items) { item in
-                        Text(item.title)
-                            .font(.headline)
+                        NavigationLink {
+                            ActivityDetailView(activity: item)
+                        } label: {
+                            Text(item.title)
+                                .font(.headline)
+                        }
                     }
+                    .onDelete(perform: removeActivity)
                 }
             }
-            .padding()
+            .background(.lightBackground)
             .navigationTitle("Habit Tracker")
             .toolbar {
                 Button {
@@ -37,6 +42,16 @@ struct ContentView: View {
         }
     }
     
+    func removeActivity(at offsets: IndexSet) {
+        for offset in offsets {
+            if let index = activities.items.firstIndex(
+                where: { $0.id == activities.items[offset].id }
+            ) {
+                activities.items.remove(at: index)
+            }
+        }
+    }
+    
 //    func addAnActivity() {
 //        var activity = Activity(title: "sample", description: "some random activity")
 //        activities.items.append(activity)
@@ -48,5 +63,6 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .preferredColorScheme(.dark)
     }
 }
