@@ -12,20 +12,14 @@ struct ContentView: View {
     @State private var showingAddHabit = false
     
     var body: some View {
-        NavigationView {
-            VStack {
-                List {
-                    ForEach(activities.items) { item in
-                        NavigationLink {
-                            ActivityDetailView(activity: item)
-                        } label: {
-                            Text(item.title)
-                                .font(.headline)
-                        }
-                    }
-                    .onDelete(perform: removeActivity)
+        NavigationStack {
+            List {
+                ForEach(activities.items) { item in
+                    NavigationLink(item.title, value: item)
                 }
+                .onDelete(perform: removeActivity)
             }
+            .navigationDestination(for: Activity.self, destination: ActivityDetailView.init)
             .background(.lightBackground)
             .navigationTitle("Habit Tracker")
             .toolbar {
@@ -38,7 +32,7 @@ struct ContentView: View {
             .sheet(isPresented: $showingAddHabit) {
                 AddActivityView(activities: activities)
             }
-//            .onAppear { addAnActivity() }
+            //            .onAppear { addAnActivity() }
         }
     }
     
