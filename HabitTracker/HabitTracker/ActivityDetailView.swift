@@ -21,6 +21,13 @@ struct ActivityDetailView: View {
                     Text(activity.description)
                 }
                 
+                HStack {
+                    Text("Count:")
+                        .font(.headline)
+                    
+                    Text(activity.count, format: .number)
+                }
+                
                 Spacer()
                 Spacer()
                 Spacer()
@@ -34,7 +41,8 @@ struct ActivityDetailView_Previews: PreviewProvider {
     static var previews: some View {
         ActivityDetailView(activity: Activity(
             title: "Sample",
-            description: "Sample's description")
+            description: "Sample's description",
+            count: 5)
         )
     }
 }

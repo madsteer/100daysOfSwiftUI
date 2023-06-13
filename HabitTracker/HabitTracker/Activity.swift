@@ -11,4 +11,5 @@ struct Activity: Identifiable, Codable, Hashable {
     var id = UUID()
     let title: String
     let description: String
+    var count = 0
 }

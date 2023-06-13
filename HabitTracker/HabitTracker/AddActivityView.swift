@@ -13,6 +13,7 @@ struct AddActivityView: View {
     @ObservedObject var activities: Activities
     @State private var title = ""
     @State private var description = ""
+    @State private var count = 0
     
     var body: some View {
         NavigationView {
@@ -20,10 +21,13 @@ struct AddActivityView: View {
                 TextField("Title", text: $title)
                 
                 TextField("Description", text: $description)
+                
+                TextField("Count", value: $count, format: .number)
+                    .keyboardType(.decimalPad)
             }
             .toolbar {
                 Button("Save") {
-                    activities.items.append(Activity(title: title, description: description))
+                    activities.items.append(Activity(title: title, description: description, count: count))
                     dismiss()
                 }
             }
