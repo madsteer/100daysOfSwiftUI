@@ -14,7 +14,7 @@ extension Array where Element == Activity {
     }
 }
 
-struct Activity: Identifiable, Codable, Hashable {
+struct Activity: Equatable, Identifiable, Codable, Hashable {
     var id = UUID()
     let title: String
     var description: String

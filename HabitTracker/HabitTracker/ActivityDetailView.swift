@@ -27,6 +27,7 @@ struct ActivityDetailView: View {
                     HStack {
                         Button("+") {
                             self.activity.count += 1
+                            updateElement()
                         }
                         
                         Divider()
@@ -43,16 +44,19 @@ struct ActivityDetailView: View {
             .navigationTitle(activity.title)
             .toolbar {
                 Button("Save") {
-                    let activityIndex = activities.items.findActivity(for: activity)
-                    if activityIndex >= 0 {
-                        if activity.id == activities.items[activityIndex].id {
-                            activities.items.remove(at: activityIndex)
-                            activities.items.insert(activity, at: activityIndex)
-                        }
-                    }
+                    updateElement()
                     
                     dismiss()
                 }
+            }
+        }
+    }
+    
+    func updateElement() {
+        let activityIndex = activities.items.findActivity(for: activity)
+        if activityIndex >= 0 {
+            if activity.id == activities.items[activityIndex].id {
+                activities.items[activityIndex] = activity
             }
         }
     }
