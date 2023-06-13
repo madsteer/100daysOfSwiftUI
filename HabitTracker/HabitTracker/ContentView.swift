@@ -15,11 +15,14 @@ struct ContentView: View {
         NavigationStack {
             List {
                 ForEach(activities.items) { item in
-                    NavigationLink(item.title, value: item)
+                    NavigationLink {
+                        ActivityDetailView(activities: activities, activity: item)
+                    } label: {
+                        Text(item.title)
+                    }
                 }
                 .onDelete(perform: removeActivity)
             }
-            .navigationDestination(for: Activity.self, destination: ActivityDetailView.init)
             .background(.lightBackground)
             .navigationTitle("Habit Tracker")
             .toolbar {
