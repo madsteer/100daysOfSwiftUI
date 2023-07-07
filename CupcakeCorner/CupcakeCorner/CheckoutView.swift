@@ -13,6 +13,9 @@ struct CheckoutView: View {
     @State private var confirmationMessage = ""
     @State private var showingConfirmation = false
     
+    @State private var postErrorMessage = ""
+    @State private var showingPostError = false
+    
     var body: some View {
         ScrollView {
             VStack {
@@ -43,11 +46,18 @@ struct CheckoutView: View {
         } message: {
             Text(confirmationMessage)
         }
+        .alert("Ruh Roh!", isPresented: $showingPostError) {
+            Button("OK") { }
+        } message: {
+            Text(postErrorMessage)
+        }
     }
     
     func placeOrder() async {
         guard let encoded = try? JSONEncoder().encode(order) else {
-            print("Failed to encode order")
+            let msg = "Failed to encode order"
+            print(msg)
+            popError(with: msg)
             return
         }
         
@@ -63,8 +73,15 @@ struct CheckoutView: View {
             confirmationMessage = "Your order for \(decodedOrder.quantity)x \(Order.types[decodedOrder.type].lowercased()) cupcakes is on it's way!"
             showingConfirmation = true
         } catch {
-            print("Checkout failed.\n\n\(error)\n\n")
+            let msg = "Checkout failed to complete."
+            print("\(msg)\n\n\(error)\n\n")
+            popError(with: msg)
         }
+    }
+    
+    func popError(with message: String) {
+        postErrorMessage = message
+        showingPostError = true
     }
 }
 
