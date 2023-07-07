@@ -65,7 +65,7 @@ class Order: ObservableObject, Codable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         
         try container.encode(type, forKey: .type)
-        try container.encode(quantity, forKey: .type)
+        try container.encode(quantity, forKey: .quantity)
         try container.encode(extraFrosting, forKey: .extraFrosting)
         try container.encode(addSprinkles, forKey: .addSprinkles)
         try container.encode(name, forKey: .name)
