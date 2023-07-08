@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CheckoutView: View {
-    @ObservedObject var order: Order
+    @ObservedObject var order: ObservableOrder
     
     @State private var confirmationMessage = ""
     @State private var showingConfirmation = false
@@ -16,10 +16,12 @@ struct CheckoutView: View {
     @State private var postErrorMessage = ""
     @State private var showingPostError = false
     
+    private let urlString = "https://hws.dev/img/cupcakes@3x.jpg"
+    
     var body: some View {
         ScrollView {
             VStack {
-                AsyncImage(url: URL(string: "https://hws.dev/img/cupcakes@3x.jpg"), scale: 3) { image in
+                AsyncImage(url: URL(string: urlString), scale: 3) { image in
                     image
                         .resizable()
                         .scaledToFit()
@@ -28,7 +30,7 @@ struct CheckoutView: View {
                 }
                 .frame(height: 233)
                 
-                Text("Your total is \(order.cost, format: .currency(code: "USD"))")
+                Text("Your total is \(order.order.cost, format: .currency(code: "USD"))")
                     .font(.title)
                 
                 Button("Place Order") {
@@ -69,8 +71,8 @@ struct CheckoutView: View {
         do {
             let (data, _) = try await URLSession.shared.upload(for: request, from: encoded)
             
-            let decodedOrder = try JSONDecoder().decode(Order.self, from: data)
-            confirmationMessage = "Your order for \(decodedOrder.quantity)x \(Order.types[decodedOrder.type].lowercased()) cupcakes is on it's way!"
+            let decodedOrder = try JSONDecoder().decode(ObservableOrder.self, from: data)
+            confirmationMessage = "Your order for \(decodedOrder.order.quantity)x \(Order.types[decodedOrder.order.type].lowercased()) cupcakes is on it's way!"
             showingConfirmation = true
         } catch {
             let msg = "Checkout failed to complete."
@@ -88,7 +90,7 @@ struct CheckoutView: View {
 struct CheckoutView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            CheckoutView(order: Order())
+            CheckoutView(order: ObservableOrder())
         }
     }
 }
