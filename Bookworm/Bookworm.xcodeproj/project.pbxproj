@@ -66,10 +66,10 @@
 			children = (
 				7D44F1032A5CFCF7004C1200 /* BookwormApp.swift */,
 				7D44F1052A5CFCF7004C1200 /* ContentView.swift */,
-				7D44F11D2A5F9E43004C1200 /* DetailView.swift */,
-				7D44F11B2A5E3914004C1200 /* EmojiRatingView.swift */,
 				7D44F1172A5E30B9004C1200 /* AddBookView.swift */,
+				7D44F11D2A5F9E43004C1200 /* DetailView.swift */,
 				7D44F1192A5E35F6004C1200 /* RatingView.swift */,
+				7D44F11B2A5E3914004C1200 /* EmojiRatingView.swift */,
 				7D44F1122A5D041B004C1200 /* Bookworm.xcdatamodeld */,
 				7D44F1152A5D04D5004C1200 /* DataController.swift */,
 				7D44F1072A5CFCF9004C1200 /* Assets.xcassets */,
