@@ -16,6 +16,16 @@ struct AddBookView: View {
     @State private var rating = 3
     @State private var genre = ""
     @State private var review = ""
+    
+    @State private var isValidGenre = false
+    
+    var isValidTitle: Bool {
+        return !title.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+    }
+    
+    var isValidAuthor: Bool {
+        return !author.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+    }
 
     let genres = ["Fantasy", "Horror", "Kids", "Mystery", "Poetry", "Educational"]
     
@@ -31,6 +41,9 @@ struct AddBookView: View {
                             Text($0)
                         }
                     }
+                    .onChange(of: genre, perform: { _ in
+                        onGenreChange()
+                    })
                 }
                 
                 Section {
@@ -55,9 +68,18 @@ struct AddBookView: View {
                         dismiss()
                     }
                 }
+                .disabled(!hasValidEntry())
             }
         }
         .navigationTitle("Add Book")
+    }
+    
+    func hasValidEntry() -> Bool {
+        return isValidTitle && isValidAuthor && isValidGenre
+    }
+    
+    func onGenreChange() {
+        isValidGenre = true
     }
 }
 
