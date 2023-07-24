@@ -64,9 +64,9 @@
 			children = (
 				7DD499572A6F050E00412A2D /* Singer+CoreDataClass.swift */,
 				7DD499582A6F050E00412A2D /* Singer+CoreDataProperties.swift */,
+				7D7B2BBD2A6748F1002DEF4A /* ContentView.swift */,
 				7DD4995B2A6F053100412A2D /* FilteredListView.swift */,
 				7D7B2BBB2A6748F1002DEF4A /* CoreDataProjectApp.swift */,
-				7D7B2BBD2A6748F1002DEF4A /* ContentView.swift */,
 				7D7B2BCA2A67492D002DEF4A /* DataController.swift */,
 				7D7B2BCC2A674962002DEF4A /* CoreDataProject.xcdatamodeld */,
 				7D7B2BBF2A6748F3002DEF4A /* Assets.xcassets */,
