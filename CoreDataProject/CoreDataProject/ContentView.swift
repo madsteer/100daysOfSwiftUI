@@ -14,7 +14,7 @@ struct ContentView: View {
 
     var body: some View {
         VStack {
-            FilteredListView(filterKey: "lastName", filterValue: lastNameFilter) { (singer: Singer) in
+            FilteredListView(filterKey: "lastName", filterValue: lastNameFilter, filterVerb: .beginsWith) { (singer: Singer) in
                 Text("\(singer.wrappedFirstName) \(singer.wrappedLastName)")
             }
             
