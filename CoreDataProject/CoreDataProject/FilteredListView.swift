@@ -14,6 +14,8 @@ enum PredicateVerb: String {
 
 struct FilteredListView<T: NSManagedObject, Content: View>: View {
     @FetchRequest var fetchRequest: FetchedResults<T>
+    
+    // this is our content closure;  we'll call this once for each item in the liast
     let content: (T) -> Content
     
     var body: some View {
@@ -22,8 +24,8 @@ struct FilteredListView<T: NSManagedObject, Content: View>: View {
         }
     }
     
-    init(filterKey: String, filterValue: String, filterVerb: PredicateVerb, @ViewBuilder content: @escaping (T) -> Content) {
-        _fetchRequest = FetchRequest<T>(sortDescriptors: [], predicate: NSPredicate(format: "\(filterKey) \(filterVerb.rawValue) %@", filterValue))
+    init(filterKey: String, filterValue: String, filterVerb: PredicateVerb, sortDescriptors: [SortDescriptor<T>] = [], @ViewBuilder content: @escaping (T) -> Content) {
+        _fetchRequest = FetchRequest<T>(sortDescriptors: sortDescriptors, predicate: NSPredicate(format: "\(filterKey) \(filterVerb.rawValue) %@", filterValue))
         self.content = content
     }
 }
