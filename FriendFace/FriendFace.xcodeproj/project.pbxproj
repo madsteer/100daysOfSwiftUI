@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7DCF26F12A82C73F0098D95F /* UserDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DCF26F02A82C73F0098D95F /* UserDetailView.swift */; };
 		7DFE1E9F2A72BBBF00AB58AC /* FriendFaceApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DFE1E9E2A72BBBF00AB58AC /* FriendFaceApp.swift */; };
 		7DFE1EA12A72BBBF00AB58AC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DFE1EA02A72BBBF00AB58AC /* ContentView.swift */; };
 		7DFE1EA32A72BBC000AB58AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7DFE1EA22A72BBC000AB58AC /* Assets.xcassets */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7DCF26F02A82C73F0098D95F /* UserDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDetailView.swift; sourceTree = "<group>"; };
 		7DFE1E9B2A72BBBF00AB58AC /* FriendFace.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FriendFace.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DFE1E9E2A72BBBF00AB58AC /* FriendFaceApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendFaceApp.swift; sourceTree = "<group>"; };
 		7DFE1EA02A72BBBF00AB58AC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -57,6 +59,7 @@
 			children = (
 				7DFE1E9E2A72BBBF00AB58AC /* FriendFaceApp.swift */,
 				7DFE1EA02A72BBBF00AB58AC /* ContentView.swift */,
+				7DCF26F02A82C73F0098D95F /* UserDetailView.swift */,
 				7DFE1EB02A72BE2400AB58AC /* User.swift */,
 				7DFE1EAE2A72BD3500AB58AC /* Friend.swift */,
 				7DFE1EA22A72BBC000AB58AC /* Assets.xcassets */,
@@ -146,6 +149,7 @@
 				7DFE1EA12A72BBBF00AB58AC /* ContentView.swift in Sources */,
 				7DFE1E9F2A72BBBF00AB58AC /* FriendFaceApp.swift in Sources */,
 				7DFE1EB12A72BE2400AB58AC /* User.swift in Sources */,
+				7DCF26F12A82C73F0098D95F /* UserDetailView.swift in Sources */,
 				7DFE1EAF2A72BD3500AB58AC /* Friend.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

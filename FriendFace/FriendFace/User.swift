@@ -7,14 +7,17 @@
 
 import SwiftUI
 
-struct User: Equatable, Identifiable, Codable, Hashable {
-    private enum CodingKeys: String, CodingKey {
-        case id, name, age, company, friends
-    }
-    
-    var id: String
-    var name: String
-    var age: Int
-    var company: String
-    var friends: [Friend]
+struct User: Equatable, Identifiable, Codable, Hashable {    
+    let id: String
+        let isActive: Bool
+        let name: String
+        let age: Int
+        let company: String
+        let email: String
+        let address: String
+        let about: String
+        let registered: String
+        let tags: [String]
+        let friends: [Friend]
+
 }

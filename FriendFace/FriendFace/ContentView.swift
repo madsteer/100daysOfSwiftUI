@@ -16,18 +16,20 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             List(users, id: \.id) { user in
-                VStack {
-                        Text(user.name)
-                            .font(.headline)
-                        
-                        Text("Number of friends: \(user.friends.count)")
-                        .font(.callout)
+                NavigationLink {
+                    UserDetailView(user: user)
+                } label: {
+                    Text(user.name)
+                        .font(.headline)
+                    Spacer()
+                    Image(systemName: "heart.fill")
+                        .foregroundColor(user.isActive ? .green : .red)
                 }
             }
             .task {
                 await loadData()
             }
-            .navigationTitle("Face Friend")
+            .navigationTitle("Friend Face")
         }
     }
     
