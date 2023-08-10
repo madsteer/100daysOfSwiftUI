@@ -14,7 +14,6 @@
 		7DCF270C2A8322CD0098D95F /* CachedUser+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DCF27082A8322CD0098D95F /* CachedUser+CoreDataProperties.swift */; };
 		7DCF270D2A8322CD0098D95F /* CachedFriend+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DCF27092A8322CD0098D95F /* CachedFriend+CoreDataClass.swift */; };
 		7DCF270E2A8322CD0098D95F /* CachedFriend+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DCF270A2A8322CD0098D95F /* CachedFriend+CoreDataProperties.swift */; };
-		7DCF27102A8339E40098D95F /* UserDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DCF270F2A8339E40098D95F /* UserDataModel.swift */; };
 		7DFE1E9F2A72BBBF00AB58AC /* FriendFaceApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DFE1E9E2A72BBBF00AB58AC /* FriendFaceApp.swift */; };
 		7DFE1EA12A72BBBF00AB58AC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DFE1EA02A72BBBF00AB58AC /* ContentView.swift */; };
 		7DFE1EA32A72BBC000AB58AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7DFE1EA22A72BBC000AB58AC /* Assets.xcassets */; };
@@ -31,7 +30,6 @@
 		7DCF27082A8322CD0098D95F /* CachedUser+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CachedUser+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		7DCF27092A8322CD0098D95F /* CachedFriend+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CachedFriend+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		7DCF270A2A8322CD0098D95F /* CachedFriend+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CachedFriend+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
-		7DCF270F2A8339E40098D95F /* UserDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataModel.swift; sourceTree = "<group>"; };
 		7DFE1E9B2A72BBBF00AB58AC /* FriendFace.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FriendFace.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DFE1E9E2A72BBBF00AB58AC /* FriendFaceApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendFaceApp.swift; sourceTree = "<group>"; };
 		7DFE1EA02A72BBBF00AB58AC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -74,7 +72,6 @@
 				7DFE1E9E2A72BBBF00AB58AC /* FriendFaceApp.swift */,
 				7DFE1EA02A72BBBF00AB58AC /* ContentView.swift */,
 				7DCF26F02A82C73F0098D95F /* UserDetailView.swift */,
-				7DCF270F2A8339E40098D95F /* UserDataModel.swift */,
 				7DCF26FD2A831BCF0098D95F /* DataController.swift */,
 				7DCF27072A8322CD0098D95F /* CachedUser+CoreDataClass.swift */,
 				7DCF27082A8322CD0098D95F /* CachedUser+CoreDataProperties.swift */,
@@ -167,7 +164,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7DCF27102A8339E40098D95F /* UserDataModel.swift in Sources */,
 				7DCF26F42A82DA1E0098D95F /* FriendFace.xcdatamodeld in Sources */,
 				7DFE1EA12A72BBBF00AB58AC /* ContentView.swift in Sources */,
 				7DCF26FE2A831BCF0098D95F /* DataController.swift in Sources */,

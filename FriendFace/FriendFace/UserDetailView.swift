@@ -8,60 +8,62 @@
 import SwiftUI
 
 struct UserDetailView: View {
-    var user: User
+    var user: CachedUser
     
     var body: some View {
         List {
             Section {
-                Text("id: \(user.id)")
+                Text("id: \(user.wrappedId)")
                 Text("age: \(user.age)")
-                Text("company: \(user.company)")
-                Text("email: \(user.email)")
+                Text("company: \(user.wrappedCompany)")
+                Text("email: \(user.wrappedEmail)")
             }
             
             Section(header: Text("Address")) {
-                Text(user.address)
+                Text(user.wrappedAddress)
             }
             
             Section {
-                Text(user.about)
+                Text(user.wrappedAbout)
             }
             
             Section(header: Text("Tags")) {
-                ForEach(user.tags, id: \.self) { tag in
+                ForEach(user.wrappedTags, id: \.self) { tag in
                     Text(tag)
                 }
             }
             
             Section(header: Text("Friends")) {
-                ForEach(user.friends, id: \.self) { friend in
-                    Text(friend.name)
+                ForEach(user.friendArray, id: \.self) { friend in
+                    Text(friend.wrappedName)
                 }
             }
         }
-        .navigationTitle(user.name)
+        .navigationTitle(user.wrappedName)
     }
 }
 
-struct UserDetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        let friend1 = Friend(id: "12345", name: "John Doe")
-        let friend2 = Friend(id: "45678", name: "Jill Doe")
-        let user = User(
-            id: "123",
-            isActive: false,
-            name: "Jose Quervo",
-            age: 21,
-            company: "Acme",
-            email: "user@domain.com",
-            address: "123 Melody Lane",
-            about: "Successfull blah blah blah.  Who gives a hoot.",
-            registered: "yes",
-            tags: ["husband", "father"],
-            friends: [friend1, friend2]
-        )
-        NavigationView {
-            UserDetailView(user: user)
-        }
-    }
-}
+//struct UserDetailView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        let friendA = CachedFriend()
+//        friendA.id = "12345"
+//        let friend1 = Friend(id: "12345", name: "John Doe")
+//        let friend2 = Friend(id: "45678", name: "Jill Doe")
+//        let user = User(
+//            id: "123",
+//            isActive: false,
+//            name: "Jose Quervo",
+//            age: 21,
+//            company: "Acme",
+//            email: "user@domain.com",
+//            address: "123 Melody Lane",
+//            about: "Successfull blah blah blah.  Who gives a hoot.",
+//            registered: "yes",
+//            tags: ["husband", "father"],
+//            friends: [friend1, friend2]
+//        )
+//        NavigationView {
+//            UserDetailView(user: user)
+//        }
+//    }
+//}

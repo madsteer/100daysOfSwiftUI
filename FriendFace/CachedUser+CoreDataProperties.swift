@@ -53,7 +53,7 @@ extension CachedUser {
         name ?? "Unknown User"
     }
     
-    public var wrappCompany: String {
+    public var wrappedCompany: String {
         company ?? "Unknown Company"
     }
     
