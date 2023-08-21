@@ -7,38 +7,50 @@
 
 import SwiftUI
 
-struct ContentView: View {
+enum LoadingState {
+    case loading, success, failed
+}
+
+struct LoadingView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
-                .onTapGesture {
-                    let str = "Test Message"
-                    let url = getDocumentsDirectory().appendingPathComponent("message.txt")
-                    
-                    FileManager.writeTo(url, str)
-                    
-                    let input = FileManager.getDocument(from: url)
-                    print(input)
-//                    do {
-//                        try str.write(to: url, atomically: true, encoding: .utf8)
-//
-//                        let input = try String(contentsOf: url)
-//                        print(input)
-//                    } catch {
-//                        print(error.localizedDescription)
-//                    }
-                }
+        Text("Loading...")
+    }
+}
+
+struct SuccessView: View {
+    var body: some View {
+        Text("Success!")
+    }
+}
+
+struct FailedView: View {
+    var body: some View {
+        Text("Failed!")
+    }
+}
+
+struct ContentView: View {
+    var loadingState = LoadingState.loading
+    
+    var body: some View {
+//        VStack {
+//            Image(systemName: "globe")
+//                .imageScale(.large)
+//                .foregroundColor(.accentColor)
+//            Text("Hello, world!")
+//                .padding()
+//        }
+        
+        switch loadingState {
+        case .loading:
+            LoadingView()
+        case .success:
+            SuccessView()
+        case .failed:
+            FailedView()
         }
-        .padding()
     }
     
-    func getDocumentsDirectory() -> URL {
-        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        return paths[0]
-    }
 }
 
 struct ContentView_Previews: PreviewProvider {
