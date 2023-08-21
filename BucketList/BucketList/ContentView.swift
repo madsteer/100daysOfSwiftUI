@@ -18,14 +18,18 @@ struct ContentView: View {
                     let str = "Test Message"
                     let url = getDocumentsDirectory().appendingPathComponent("message.txt")
                     
-                    do {
-                        try str.write(to: url, atomically: true, encoding: .utf8)
-                        
-                        let input = try String(contentsOf: url)
-                        print(input)
-                    } catch {
-                        print(error.localizedDescription)
-                    }
+                    FileManager.writeTo(url, str)
+                    
+                    let input = FileManager.getDocument(from: url)
+                    print(input)
+//                    do {
+//                        try str.write(to: url, atomically: true, encoding: .utf8)
+//
+//                        let input = try String(contentsOf: url)
+//                        print(input)
+//                    } catch {
+//                        print(error.localizedDescription)
+//                    }
                 }
         }
         .padding()
