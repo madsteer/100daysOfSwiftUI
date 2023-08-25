@@ -5,61 +5,46 @@
 //  Created by Cory Steers on 8/21/23.
 //
 
-import MapKit
+import LocalAuthentication
 import SwiftUI
 
-struct Location: Identifiable {
-    let id = UUID()
-    let name: String
-    let coordinate: CLLocationCoordinate2D
-}
-
 struct ContentView: View {
-    @State private var mapRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 51.5, longitude: -0.12), span: MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2))
-    
-    let locations = [
-        Location(name: "Buckingham Palace", coordinate: CLLocationCoordinate2D(latitude: 51.501, longitude: -0.141)),
-        Location(name: "Tower of London", coordinate: CLLocationCoordinate2D(latitude: 51.508, longitude: -0.076)),
-    ]
+    @State private var isUnlocked = false
+//    @State private var
     
     var body: some View {
-//        VStack {
+        VStack {
 //            Image(systemName: "globe")
 //                .imageScale(.large)
 //                .foregroundColor(.accentColor)
 //            Text("Hello, world!")
 //                .padding()
-//        }
+            
+            if isUnlocked {
+                Text("unlocked")
+            } else {
+                Text("Locked")
+            }
+        }
+        .onAppear(perform: authenticate)
+    }
+    
+    func authenticate() {
+        let context = LAContext()
+        var error: NSError?
         
-        NavigationView {
-            Map(coordinateRegion: $mapRegion, annotationItems: locations) { location in
-                //            MapMarker(coordinate: location.coordinate)
-                MapAnnotation(coordinate: location.coordinate) {
-                    //                VStack {
-                    //                    Circle()
-                    //                        .stroke(.red, lineWidth: 3)
-                    //                        .frame(width: 44, height: 44)
-                    //                    Text(location.name)
-                    //                        .bold()
-                    //                }
-                    
-//                    Circle()
-//                        .stroke(.red, lineWidth: 3)
-//                        .frame(width: 44, height: 44)
-//                        .onTapGesture {
-//                            print("Tapped on \(location.name)")
-//                        }
-                    
-                    NavigationLink {
-                        Text(location.name)
-                    } label: {
-                        Circle()
-                            .stroke(.red, lineWidth: 3)
-                            .frame(width: 44, height: 44)
-                    }
+        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
+            let reason = "Would you like to use Biometrics to log in?"
+            
+            context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { success, authenticationError in
+                if success {
+                    isUnlocked = true
+                } else {
+                    isUnlocked = false
                 }
             }
-            .navigationTitle("London Explorer")
+        } else {
+            // no biometrics
         }
     }
 }
