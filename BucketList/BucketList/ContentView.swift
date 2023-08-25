@@ -5,32 +5,22 @@
 //  Created by Cory Steers on 8/21/23.
 //
 
+import MapKit
 import SwiftUI
 
-enum LoadingState {
-    case loading, success, failed
-}
-
-struct LoadingView: View {
-    var body: some View {
-        Text("Loading...")
-    }
-}
-
-struct SuccessView: View {
-    var body: some View {
-        Text("Success!")
-    }
-}
-
-struct FailedView: View {
-    var body: some View {
-        Text("Failed!")
-    }
+struct Location: Identifiable {
+    let id = UUID()
+    let name: String
+    let coordinate: CLLocationCoordinate2D
 }
 
 struct ContentView: View {
-    var loadingState = LoadingState.loading
+    @State private var mapRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 51.5, longitude: -0.12), span: MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2))
+    
+    let locations = [
+        Location(name: "Buckingham Palace", coordinate: CLLocationCoordinate2D(latitude: 51.501, longitude: -0.141)),
+        Location(name: "Tower of London", coordinate: CLLocationCoordinate2D(latitude: 51.508, longitude: -0.076)),
+    ]
     
     var body: some View {
 //        VStack {
@@ -41,16 +31,37 @@ struct ContentView: View {
 //                .padding()
 //        }
         
-        switch loadingState {
-        case .loading:
-            LoadingView()
-        case .success:
-            SuccessView()
-        case .failed:
-            FailedView()
+        NavigationView {
+            Map(coordinateRegion: $mapRegion, annotationItems: locations) { location in
+                //            MapMarker(coordinate: location.coordinate)
+                MapAnnotation(coordinate: location.coordinate) {
+                    //                VStack {
+                    //                    Circle()
+                    //                        .stroke(.red, lineWidth: 3)
+                    //                        .frame(width: 44, height: 44)
+                    //                    Text(location.name)
+                    //                        .bold()
+                    //                }
+                    
+//                    Circle()
+//                        .stroke(.red, lineWidth: 3)
+//                        .frame(width: 44, height: 44)
+//                        .onTapGesture {
+//                            print("Tapped on \(location.name)")
+//                        }
+                    
+                    NavigationLink {
+                        Text(location.name)
+                    } label: {
+                        Circle()
+                            .stroke(.red, lineWidth: 3)
+                            .frame(width: 44, height: 44)
+                    }
+                }
+            }
+            .navigationTitle("London Explorer")
         }
     }
-    
 }
 
 struct ContentView_Previews: PreviewProvider {
