@@ -12,6 +12,7 @@
 		7D1B3F912A93F8480088C368 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D1B3F902A93F8480088C368 /* Assets.xcassets */; };
 		7D1B3F942A93F8480088C368 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D1B3F932A93F8480088C368 /* Preview Assets.xcassets */; };
 		7D1B3F9B2A93FEAA0088C368 /* FileManager+getDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1B3F9A2A93FEAA0088C368 /* FileManager+getDocument.swift */; };
+		7DD203B52A9E7DBA0087B1D7 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD203B42A9E7DBA0087B1D7 /* Location.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +22,7 @@
 		7D1B3F902A93F8480088C368 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7D1B3F932A93F8480088C368 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		7D1B3F9A2A93FEAA0088C368 /* FileManager+getDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+getDocument.swift"; sourceTree = "<group>"; };
+		7DD203B42A9E7DBA0087B1D7 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +57,7 @@
 			children = (
 				7D1B3F8C2A93F8460088C368 /* BucketListApp.swift */,
 				7D1B3F8E2A93F8460088C368 /* ContentView.swift */,
+				7DD203B42A9E7DBA0087B1D7 /* Location.swift */,
 				7D1B3F9A2A93FEAA0088C368 /* FileManager+getDocument.swift */,
 				7D1B3F902A93F8480088C368 /* Assets.xcassets */,
 				7D1B3F922A93F8480088C368 /* Preview Content */,
@@ -142,6 +145,7 @@
 			files = (
 				7D1B3F9B2A93FEAA0088C368 /* FileManager+getDocument.swift in Sources */,
 				7D1B3F8F2A93F8460088C368 /* ContentView.swift in Sources */,
+				7DD203B52A9E7DBA0087B1D7 /* Location.swift in Sources */,
 				7D1B3F8D2A93F8460088C368 /* BucketListApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -5,46 +5,53 @@
 //  Created by Cory Steers on 8/21/23.
 //
 
-import LocalAuthentication
+import MapKit
 import SwiftUI
 
 struct ContentView: View {
-    @State private var isUnlocked = false
-//    @State private var
+    @State private var mapRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 50, longitude: 0), span: MKCoordinateSpan(latitudeDelta: 25, longitudeDelta: 25))
+    
+    @State private var locations = [Location]()
     
     var body: some View {
-        VStack {
+//        VStack {
 //            Image(systemName: "globe")
 //                .imageScale(.large)
 //                .foregroundColor(.accentColor)
 //            Text("Hello, world!")
 //                .padding()
-            
-            if isUnlocked {
-                Text("unlocked")
-            } else {
-                Text("Locked")
+//        }
+        ZStack {
+            Map(coordinateRegion: $mapRegion, annotationItems: locations) { location in
+                MapMarker(coordinate: CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude))
             }
-        }
-        .onAppear(perform: authenticate)
-    }
-    
-    func authenticate() {
-        let context = LAContext()
-        var error: NSError?
-        
-        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
-            let reason = "Would you like to use Biometrics to log in?"
+                .ignoresSafeArea()
             
-            context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { success, authenticationError in
-                if success {
-                    isUnlocked = true
-                } else {
-                    isUnlocked = false
+            Circle()
+                .fill(.blue)
+                .opacity(0.3)
+                .frame(width: 32, height: 32)
+            
+            VStack {
+                Spacer()
+                
+                HStack {
+                    Spacer()
+                    
+                    Button {
+                        let newLocation = Location(id: UUID(), name: "New Location", description: "", latitude: mapRegion.center.latitude, longitude: mapRegion.center.longitude)
+                        locations.append(newLocation)
+                    } label: {
+                        Image(systemName: "plus")
+                    }
+                    .padding()
+                    .background(.black.opacity(0.75))
+                    .foregroundColor(.white)
+                    .font(.title)
+                    .clipShape(Circle())
+                    .padding(.trailing)
                 }
             }
-        } else {
-            // no biometrics
         }
     }
 }
