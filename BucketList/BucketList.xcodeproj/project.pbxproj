@@ -14,6 +14,7 @@
 		7D1B3F9B2A93FEAA0088C368 /* FileManager+getDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1B3F9A2A93FEAA0088C368 /* FileManager+getDocument.swift */; };
 		7DD203B52A9E7DBA0087B1D7 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD203B42A9E7DBA0087B1D7 /* Location.swift */; };
 		7DD203B72A9E87BC0087B1D7 /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD203B62A9E87BC0087B1D7 /* EditView.swift */; };
+		7DD203B92A9E99A00087B1D7 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD203B82A9E99A00087B1D7 /* Result.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		7D1B3F9A2A93FEAA0088C368 /* FileManager+getDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+getDocument.swift"; sourceTree = "<group>"; };
 		7DD203B42A9E7DBA0087B1D7 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		7DD203B62A9E87BC0087B1D7 /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
+		7DD203B82A9E99A00087B1D7 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 			children = (
 				7D1B3F8C2A93F8460088C368 /* BucketListApp.swift */,
 				7D1B3F8E2A93F8460088C368 /* ContentView.swift */,
+				7DD203B82A9E99A00087B1D7 /* Result.swift */,
 				7DD203B62A9E87BC0087B1D7 /* EditView.swift */,
 				7DD203B42A9E7DBA0087B1D7 /* Location.swift */,
 				7D1B3F9A2A93FEAA0088C368 /* FileManager+getDocument.swift */,
@@ -146,6 +149,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7DD203B92A9E99A00087B1D7 /* Result.swift in Sources */,
 				7D1B3F9B2A93FEAA0088C368 /* FileManager+getDocument.swift in Sources */,
 				7DD203B72A9E87BC0087B1D7 /* EditView.swift in Sources */,
 				7D1B3F8F2A93F8460088C368 /* ContentView.swift in Sources */,
