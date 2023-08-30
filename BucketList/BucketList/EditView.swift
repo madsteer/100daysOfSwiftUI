@@ -39,7 +39,7 @@ struct EditView: View {
                             Text(page.title)
                                 .font(.headline)
                             + Text(":\n")
-                            + Text("Page description here")
+                            + Text(page.description)
                                 .italic()
                         }
                     case .failed:
@@ -75,7 +75,8 @@ struct EditView: View {
     }
 
     func fetchNearbyPlaces() async {
-        let urlString = "https://en.wikipedia.org/w/api.php?ggscoord=\(location.coordinate.latitude)%7C\(location.coordinate.longitude)&action=query&prop=coordinates%7Cpageimages%7Cpageterms&colimit=50&piprop=thumbnail&pithumbsize=500&pilimit=50&wbptterms=description&generator=geosearch&ggsradius=10000&ggslimit=50&format=json"
+//        let urlString = "https://en.wikipedia.org/w/api.php?ggscoord=\(location.coordinate.latitude)%7C\(location.coordinate.longitude)&action=query&prop=coordinates%7Cpageimages%7Cpageterms&colimit=50&piprop=thumbnail&pithumbsize=500&pilimit=50&wbptterms=description&generator=geosearch&ggsradius=10000&ggslimit=50&format=json"
+        let urlString = "http://127.0.0.1:8085/wiki.json"
         
         guard let url = URL(string: urlString) else {
             print("Bad URL: \(urlString)")
@@ -85,7 +86,7 @@ struct EditView: View {
         do {
             let (data, _) = try await URLSession.shared.data(from: url)
             let items = try JSONDecoder().decode(Result.self, from: data)
-            pages = items.query.pages.values.sorted { $0.title < $1.title }
+            pages = items.query.pages.values.sorted()
             loadingState = .loaded
         } catch {
             print("data failed to load: \(error.localizedDescription)\n\nlat: \(location.coordinate.latitude)\nlong: \(location.coordinate.longitude)\n")
