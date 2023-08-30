@@ -6,14 +6,15 @@
 //
 
 import Foundation
+import LocalAuthentication
 import MapKit
 
 extension ContentView {
     @MainActor class ViewModel: ObservableObject {
         @Published var mapRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 50, longitude: 0), span: MKCoordinateSpan(latitudeDelta: 25, longitudeDelta: 25))
         @Published private(set) var locations: [Location]
-        
         @Published var selectedPlace: Location?
+        @Published var isUnlocked = false
         
         let savePath = FileManager.documentsDirectory.appendingPathComponent("SavedPlaces")
         
@@ -39,6 +40,27 @@ extension ContentView {
             let newLocation = Location(id: UUID(), name: "New Location", description: "", latitude: mapRegion.center.latitude, longitude: mapRegion.center.longitude)
             locations.append(newLocation)
             save()
+        }
+        
+        func authenticate() {
+            let context = LAContext()
+            var error: NSError?
+            
+            if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
+                let touchIdReason = "Would you like to use Biometrics to log in?"
+                
+                context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: touchIdReason) { success, authenticationError in
+                    if success {
+                        Task { @MainActor in
+                            self.isUnlocked = true
+                        }
+                    } else {
+                        // error
+                    }
+                }
+            } else {
+                // no biometrics allowed/available
+            }
         }
         
         func update(location: Location) {
