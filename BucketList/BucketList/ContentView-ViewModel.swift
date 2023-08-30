@@ -15,6 +15,8 @@ extension ContentView {
         @Published private(set) var locations: [Location]
         @Published var selectedPlace: Location?
         @Published var isUnlocked = false
+        @Published var isUnlockedFailedAlert = false
+        @Published var isUnlockedFailedMessage = ""
         
         let savePath = FileManager.documentsDirectory.appendingPathComponent("SavedPlaces")
         
@@ -55,11 +57,17 @@ extension ContentView {
                             self.isUnlocked = true
                         }
                     } else {
-                        // error
+                        print("Biometric authentication failed: \(authenticationError?.localizedDescription ?? "<no error description>")")
+                        Task { @MainActor in
+                            self.isUnlockedFailedMessage = "Touch ID/Face ID didn't work"
+                            self.isUnlockedFailedAlert = true
+                        }
                     }
                 }
             } else {
-                // no biometrics allowed/available
+                self.isUnlockedFailedMessage = "Biometricd authentication not allowed for this app.  This can be fixed in iOS settings"
+                print("Biometric authentication failed: \(error?.localizedDescription ?? "<no error description>")")
+                self.isUnlockedFailedAlert = true
             }
         }
         
