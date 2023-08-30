@@ -75,6 +75,7 @@ struct ContentView: View {
                 .clipShape(Capsule())
             }
         }
+        .onAppear(perform: viewModel.authenticate)
         .alert("Biometric Auth failed!", isPresented: $viewModel.isUnlockedFailedAlert) {
             Button("OK") {}
         } message: {
