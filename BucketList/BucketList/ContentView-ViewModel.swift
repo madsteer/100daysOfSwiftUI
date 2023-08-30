@@ -20,7 +20,7 @@ extension ContentView {
         
         let savePath = FileManager.documentsDirectory.appendingPathComponent("SavedPlaces")
         
-        init(){
+        init() {
             do {
                 let data = try Data(contentsOf: savePath)
                 locations = try JSONDecoder().decode([Location].self, from: data)
