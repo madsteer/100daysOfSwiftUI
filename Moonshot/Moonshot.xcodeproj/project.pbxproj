@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7D1810EA29F1D3780083EEBA /* MoodshotApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1810E929F1D3780083EEBA /* MoodshotApp.swift */; };
+		7D1810EA29F1D3780083EEBA /* MoonshotApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1810E929F1D3780083EEBA /* MoonshotApp.swift */; };
 		7D1810EC29F1D3780083EEBA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1810EB29F1D3780083EEBA /* ContentView.swift */; };
 		7D1810EE29F1D3790083EEBA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D1810ED29F1D3790083EEBA /* Assets.xcassets */; };
 		7D1810F229F1D3790083EEBA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D1810F129F1D3790083EEBA /* Preview Assets.xcassets */; };
@@ -27,11 +27,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		7D1810E629F1D3780083EEBA /* Moodshot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Moodshot.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		7D1810E929F1D3780083EEBA /* MoodshotApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodshotApp.swift; sourceTree = "<group>"; };
+		7D1810E629F1D3780083EEBA /* Moonshot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Moonshot.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7D1810E929F1D3780083EEBA /* MoonshotApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoonshotApp.swift; sourceTree = "<group>"; };
 		7D1810EB29F1D3780083EEBA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7D1810ED29F1D3790083EEBA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		7D1810EF29F1D3790083EEBA /* Moodshot.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Moodshot.entitlements; sourceTree = "<group>"; };
+		7D1810EF29F1D3790083EEBA /* Moonshot.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Moonshot.entitlements; sourceTree = "<group>"; };
 		7D1810F129F1D3790083EEBA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		7D46554C2A00643A00B08EA3 /* AstronautView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstronautView.swift; sourceTree = "<group>"; };
 		7D66A67F2A12C4C100721E38 /* AstronautScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstronautScrollView.swift; sourceTree = "<group>"; };
@@ -62,7 +62,7 @@
 		7D1810DD29F1D3780083EEBA = {
 			isa = PBXGroup;
 			children = (
-				7D1810E829F1D3780083EEBA /* Moodshot */,
+				7D1810E829F1D3780083EEBA /* Moonshot */,
 				7D1810E729F1D3780083EEBA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -70,15 +70,15 @@
 		7D1810E729F1D3780083EEBA /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7D1810E629F1D3780083EEBA /* Moodshot.app */,
+				7D1810E629F1D3780083EEBA /* Moonshot.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		7D1810E829F1D3780083EEBA /* Moodshot */ = {
+		7D1810E829F1D3780083EEBA /* Moonshot */ = {
 			isa = PBXGroup;
 			children = (
-				7D1810E929F1D3780083EEBA /* MoodshotApp.swift */,
+				7D1810E929F1D3780083EEBA /* MoonshotApp.swift */,
 				7D1810EB29F1D3780083EEBA /* ContentView.swift */,
 				7D66A6872A12D05500721E38 /* MainListView.swift */,
 				7D66A6852A12CDA600721E38 /* MainGridView.swift */,
@@ -94,10 +94,10 @@
 				7DC8ABEE29F70EB400CA9DEF /* astronauts.json */,
 				7DC8ABEF29F70EB400CA9DEF /* missions.json */,
 				7D1810ED29F1D3790083EEBA /* Assets.xcassets */,
-				7D1810EF29F1D3790083EEBA /* Moodshot.entitlements */,
+				7D1810EF29F1D3790083EEBA /* Moonshot.entitlements */,
 				7D1810F029F1D3790083EEBA /* Preview Content */,
 			);
-			path = Moodshot;
+			path = Moonshot;
 			sourceTree = "<group>";
 		};
 		7D1810F029F1D3790083EEBA /* Preview Content */ = {
@@ -111,9 +111,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		7D1810E529F1D3780083EEBA /* Moodshot */ = {
+		7D1810E529F1D3780083EEBA /* Moonshot */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7D1810F529F1D3790083EEBA /* Build configuration list for PBXNativeTarget "Moodshot" */;
+			buildConfigurationList = 7D1810F529F1D3790083EEBA /* Build configuration list for PBXNativeTarget "Moonshot" */;
 			buildPhases = (
 				7D1810E229F1D3780083EEBA /* Sources */,
 				7D1810E329F1D3780083EEBA /* Frameworks */,
@@ -123,9 +123,9 @@
 			);
 			dependencies = (
 			);
-			name = Moodshot;
-			productName = Moodshot;
-			productReference = 7D1810E629F1D3780083EEBA /* Moodshot.app */;
+			name = Moonshot;
+			productName = Moonshot;
+			productReference = 7D1810E629F1D3780083EEBA /* Moonshot.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -143,7 +143,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 7D1810E129F1D3780083EEBA /* Build configuration list for PBXProject "Moodshot" */;
+			buildConfigurationList = 7D1810E129F1D3780083EEBA /* Build configuration list for PBXProject "Moonshot" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -156,7 +156,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				7D1810E529F1D3780083EEBA /* Moodshot */,
+				7D1810E529F1D3780083EEBA /* Moonshot */,
 			);
 		};
 /* End PBXProject section */
@@ -188,7 +188,7 @@
 				7D66A6822A12C56B00721E38 /* CrewMember.swift in Sources */,
 				7DC8ABF929F7244D00CA9DEF /* Color-Theme.swift in Sources */,
 				7DC8ABF329F70F2500CA9DEF /* Astronaut.swift in Sources */,
-				7D1810EA29F1D3780083EEBA /* MoodshotApp.swift in Sources */,
+				7D1810EA29F1D3780083EEBA /* MoonshotApp.swift in Sources */,
 				7DC8ABF729F71DD400CA9DEF /* Mission.swift in Sources */,
 				7DC8ABF529F70F8000CA9DEF /* Bundle-decodable.swift in Sources */,
 				7D66A6882A12D05500721E38 /* MainListView.swift in Sources */,
@@ -313,10 +313,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Moodshot/Moodshot.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Moonshot/Moonshot.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Moodshot/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Moonshot/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
@@ -334,7 +334,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.1;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.madsteer.Moodshot;
+				PRODUCT_BUNDLE_IDENTIFIER = com.madsteer.Moonshot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
@@ -349,10 +349,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Moodshot/Moodshot.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Moodnhot/Moonshot.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Moodshot/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Moonshot/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
@@ -370,7 +370,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.1;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.madsteer.Moodshot;
+				PRODUCT_BUNDLE_IDENTIFIER = com.madsteer.Moonshot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
@@ -383,7 +383,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		7D1810E129F1D3780083EEBA /* Build configuration list for PBXProject "Moodshot" */ = {
+		7D1810E129F1D3780083EEBA /* Build configuration list for PBXProject "Moonshot" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7D1810F329F1D3790083EEBA /* Debug */,
@@ -392,7 +392,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7D1810F529F1D3790083EEBA /* Build configuration list for PBXNativeTarget "Moodshot" */ = {
+		7D1810F529F1D3790083EEBA /* Build configuration list for PBXNativeTarget "Moonshot" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7D1810F629F1D3790083EEBA /* Debug */,

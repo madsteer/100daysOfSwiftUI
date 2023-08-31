@@ -1,45 +1,48 @@
 //
-//  MainGridView.swift
-//  Moodshot
+//  MainListView.swift
+//  Moonshot
 //
 //  Created by Cory Steers on 5/15/23.
 //
 
 import SwiftUI
 
-struct MainGridView: View {
+struct MainListView: View {
     let astronauts: [String: Astronaut]
     let missions: [Mission]
-    
-    let columns = [
-        GridItem(.adaptive(minimum: 150))
-    ]
 
     var body: some View {
-        LazyVGrid(columns: columns) {
+        LazyVStack {
             ForEach(missions) { mission in
                 NavigationLink {
                     MissionView(mission: mission, astronauts: astronauts)
                 } label: {
-                    VStack {
+                    HStack {
                         Image(mission.image)
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 100, height: 100)
+                            .frame(width: 30, height: 30)
                             .padding()
                         
-                        VStack {
+                        HStack {
+                            Spacer()
+                            
                             Text(mission.displayName)
                                 .font(.headline)
                                 .foregroundColor(.white)
                             
+                            Spacer()
+                            
                             Text(mission.formattedLaunchDate)
                                 .font(.caption)
                                 .foregroundColor(.white.opacity(0.5))
+                            
+                            Spacer()
                         }
-                        .padding(.vertical)
-                        .frame(maxWidth: .infinity)
+                        .padding(.horizontal)
+                        .frame(maxHeight: .infinity)
                         .background(.lightBackground)
+
                     }
                     .clipShape(RoundedRectangle(cornerRadius: 10))
                     .overlay(
@@ -49,16 +52,15 @@ struct MainGridView: View {
                 }
             }
         }
-        .padding([.horizontal, .bottom])
     }
 }
 
-struct MainGridView_Previews: PreviewProvider {
+struct MainListView_Previews: PreviewProvider {
     static let missions: [Mission] = Bundle.main.decode("missions.json")
     static let astronauts: [String: Astronaut] = Bundle.main.decode("astronauts.json")
 
     static var previews: some View {
-        MainGridView(astronauts: astronauts, missions: missions)
+        MainListView(astronauts: astronauts, missions: missions)
             .preferredColorScheme(.dark)
     }
 }
