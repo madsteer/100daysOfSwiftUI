@@ -11,14 +11,6 @@ struct ContentView: View {
     @State private var value = 10
     
     var body: some View {
-//        VStack {
-//            Image(systemName: "globe")
-//                .imageScale(.large)
-//                .foregroundColor(.accentColor)
-//            Text("Hello, world!")
-//        }
-//        .padding()
-        
         VStack {
             Spacer()
             Spacer()
