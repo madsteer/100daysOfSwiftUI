@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    
-    @State private var selectedPicture = Int.random(in: 0...3)
+    @State private var value = 10
     
     var body: some View {
 //        VStack {
@@ -20,17 +19,37 @@ struct ContentView: View {
 //        }
 //        .padding()
         
-        Image(decorative: "character")
-            .accessibilityHidden(true)
-        
         VStack {
-            Text("Your score is")
-            Text("1000")
-                .font(.title)
+            Spacer()
+            Spacer()
+            
+            Text("Value: \(value)")
+            
+            Spacer()
+            
+            Button("Increment") {
+                value += 1
+            }
+            
+            Button("Decremenet") {
+                value -= 1
+            }
+            Spacer()
+            Spacer()
         }
-//        .accessibilityElement(children: .combine)
-        .accessibilityElement(children: .ignore) // or just .accessibilityElement() as ignore is the default
-        .accessibilityLabel("Your score is 1000")
+        .accessibilityElement()
+        .accessibilityLabel("Value")
+        .accessibilityValue(String(value))
+        .accessibilityAdjustableAction { direction in
+            switch direction {
+            case .increment:
+                value += 1
+            case .decrement:
+                value -= 1
+            default:
+                print("Not handled")
+            }
+        }
     }
 }
 
