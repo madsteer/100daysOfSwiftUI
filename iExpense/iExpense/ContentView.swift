@@ -34,6 +34,9 @@ struct ContentView: View {
                                 )
                                 .foregroundColor((item.amount < 10) ? .black : (item.amount < 100) ? .blue : .red)
                             }
+                            .accessibilityElement()
+                            .accessibilityLabel("\(item.name) was $\(item.amount)")
+                            .accessibilityHint(item.type)
                         }
                         .onDelete(perform: removePersonalItems)
                     }
@@ -61,6 +64,9 @@ struct ContentView: View {
                                 )
                                 .foregroundColor((item.amount < 10) ? .black : (item.amount < 100) ? .blue : .red)
                             }
+                            .accessibilityElement()
+                            .accessibilityLabel("\(item.name) was $\(item.amount)")
+                            .accessibilityHint(item.type)
                         }
                         .onDelete(perform: removeBusinessItems)
                     }
