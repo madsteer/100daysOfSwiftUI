@@ -8,19 +8,6 @@
 import SwiftUI
 
 struct ContentView: View {
-    let pictures = [
-        "ales-krivec-15949",
-        "galina-n-189483",
-        "kevin-horstmann-141705",
-        "nicolas-tissot-335096"
-    ]
-    
-    let labels = [
-        "Tulips",
-        "Frozen tree buds",
-        "Sunflowers",
-        "Fireworks"
-    ]
     
     @State private var selectedPicture = Int.random(in: 0...3)
     
@@ -33,14 +20,17 @@ struct ContentView: View {
 //        }
 //        .padding()
         
-        Image(pictures[selectedPicture])
-            .resizable()
-            .scaledToFit()
-            .onTapGesture {
-                selectedPicture = Int.random(in: 0...3)
-            }
-            .accessibilityLabel(labels[selectedPicture]) // we can do a better job of describing the images than their cryptic names
-            .accessibilityAddTraits(.isButton) // because of onTapGesture it's also a button
+        Image(decorative: "character")
+            .accessibilityHidden(true)
+        
+        VStack {
+            Text("Your score is")
+            Text("1000")
+                .font(.title)
+        }
+//        .accessibilityElement(children: .combine)
+        .accessibilityElement(children: .ignore) // or just .accessibilityElement() as ignore is the default
+        .accessibilityLabel("Your score is 1000")
     }
 }
 
