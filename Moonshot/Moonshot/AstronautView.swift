@@ -16,9 +16,11 @@ struct AstronautView: View {
                 Image(astronaut.id)
                     .resizable()
                     .scaledToFit()
+                    .accessibilityLabel("Astronaut's profile image.")
                 
                 Text(astronaut.description)
                     .padding()
+                    .accessibilityLabel("Astronaut's bio.")
             }
         }
         .background(.darkBackground)

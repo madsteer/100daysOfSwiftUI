@@ -41,6 +41,9 @@ struct MainGridView: View {
                         .frame(maxWidth: .infinity)
                         .background(.lightBackground)
                     }
+                    .accessibilityElement()
+                    .accessibilityLabel(mission.displayName)
+                    .accessibilityHint(mission.formattedLaunchDate)
                     .clipShape(RoundedRectangle(cornerRadius: 10))
                     .overlay(
                         RoundedRectangle(cornerRadius: 10)
