@@ -9,20 +9,15 @@ import SwiftUI
 
 struct AddContactView: View {
     @Environment(\.dismiss) var dismiss
-    @Environment(\.managedObjectContext) var moc
     
-    @Binding var persons: [Person]
+    @Binding var contact: Contact?
     
     @State private var inputImage: UIImage?
     @State private var firstName = ""
     @State private var lastName = ""
-    @State private var url: URL?
     @State private var showingImagePicker = false
     @State private var image: Image?
-    
-    var successHandler: (() -> Void)?
-    let imageSaver = ImageSaver()
-    
+        
     var body: some View {
         NavigationView {
             Form {
@@ -48,30 +43,13 @@ struct AddContactView: View {
             }
             .toolbar {
                 Button("Save") {
-                    if let inputImage = inputImage {
-                        let id = UUID()
-                        let contact = Contact(context: moc)
-                        contact.id = id
-                        contact.firstName = firstName
-                        contact.lastName = lastName
-                        contact.pictureFilename = id.uuidString
-                        imageSaver.successHandler = {
-                            if moc.hasChanges {
-                                do {
-                                    try moc.save()
-                                } catch {
-                                    print("moc save failed: \(error.localizedDescription)")
-                                }
-//                                try? moc.save()
-                                print("did I save?")
-                            }
-                            persons.append(Person(contact: contact, picture: inputImage))
-                            print("Picture for \(firstName) \(lastName) saved!")
-                        }
-                        imageSaver.errorHandler = {
-                            print("Unable to save one of contact photo: \($0.localizedDescription)")
-                        }
-                        imageSaver.writePhotoToDisk(inputImage, fileName: id.uuidString)
+                    if let inputImage = inputImage,
+                       let jpegData = inputImage.jpegData(compressionQuality: 0.8) {
+                        contact = Contact(id: UUID(),
+                                              firstName: firstName,
+                                              lastName: lastName,
+                                              picture: jpegData
+                        )
                     }
                     dismiss()
                 }
@@ -98,10 +76,10 @@ struct AddContactView: View {
 
 struct AddContactView_Previews: PreviewProvider {
     static var previews: some View {
-        @State var persons = [Person]()
+        @State var contact: Contact?
         
         NavigationView {
-            AddContactView(persons: $persons)
+            AddContactView(contact: $contact)
         }
         .navigationTitle("Add Contact")
     }

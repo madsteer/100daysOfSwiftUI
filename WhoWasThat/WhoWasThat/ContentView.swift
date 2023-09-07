@@ -10,29 +10,16 @@ import SwiftUI
 struct ContentView: View {
     @StateObject private var viewModel = ViewModel()
     
+    @State private var newContact: Contact?
+    
     var body: some View {
         if viewModel.isUnlocked {
             NavigationView {
-                List(viewModel.persons, id: \.id) { person in
+                List(viewModel.contacts, id: \.id) { contact in
                     NavigationLink {
-                        DetailView(person: person)
+                        DetailView(contact: contact)
                     } label: {
-                        HStack {
-                            Image(uiImage: person.picture)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 44, height: 44)
-                            
-                            Spacer()
-                            
-                            HStack {
-                                Text(person.firstName)
-                                    .font(.headline)
-                                
-                                Text(person.lastName)
-                            }
-                        }
-                            
+                        ContactEntryView(contact: contact)
                     }
                 }
                 .navigationTitle("Who was that?")
@@ -44,12 +31,12 @@ struct ContentView: View {
                     }
                 }
                 .sheet(isPresented: $viewModel.showingAddContactScreen) {
-                    AddContactView(persons: $viewModel.persons)
+                    AddContactView(contact: $newContact)
                 }
-                .onAppear {
-                    print("I'm starting to populate ... \(viewModel.persons.count)")
-                    viewModel.populatePersons()
-                    print("did I run populate? \(viewModel.persons.count)")
+                .onChange(of: newContact) { _ in
+                    if let newContact = newContact {
+                        viewModel.save(newContact)
+                    }
                 }
             }
         } else {

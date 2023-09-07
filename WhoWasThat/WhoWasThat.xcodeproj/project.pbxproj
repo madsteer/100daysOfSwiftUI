@@ -8,13 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		7D12DBEB2AA7733F0045D2BB /* AddContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D12DBEA2AA7733F0045D2BB /* AddContactView.swift */; };
-		7D12DBED2AA929360045D2BB /* ImageSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D12DBEC2AA929360045D2BB /* ImageSaver.swift */; };
 		7D12DBEF2AA9596C0045D2BB /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D12DBEE2AA9596C0045D2BB /* DetailView.swift */; };
-		7D12DBF22AA9649A0045D2BB /* WhoWasThat.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7D12DBF02AA9649A0045D2BB /* WhoWasThat.xcdatamodeld */; };
-		7D12DBFC2AA9661E0045D2BB /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D12DBFB2AA9661E0045D2BB /* DataController.swift */; };
-		7D12DBFF2AAA13700045D2BB /* Contact+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D12DBFD2AAA13700045D2BB /* Contact+CoreDataClass.swift */; };
-		7D12DC002AAA13700045D2BB /* Contact+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D12DBFE2AAA13700045D2BB /* Contact+CoreDataProperties.swift */; };
-		7D12DC022AAA2D1C0045D2BB /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D12DC012AAA2D1C0045D2BB /* Person.swift */; };
+		7D12DC062AAA52A80045D2BB /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D12DC052AAA52A80045D2BB /* Contact.swift */; };
+		7D12DC082AAA547F0045D2BB /* ContactEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D12DC072AAA547F0045D2BB /* ContactEntryView.swift */; };
 		7DD203E72AA138A20087B1D7 /* WhoWasThatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD203E62AA138A20087B1D7 /* WhoWasThatApp.swift */; };
 		7DD203E92AA138A20087B1D7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD203E82AA138A20087B1D7 /* ContentView.swift */; };
 		7DD203EB2AA138A40087B1D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7DD203EA2AA138A40087B1D7 /* Assets.xcassets */; };
@@ -26,13 +22,9 @@
 
 /* Begin PBXFileReference section */
 		7D12DBEA2AA7733F0045D2BB /* AddContactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContactView.swift; sourceTree = "<group>"; };
-		7D12DBEC2AA929360045D2BB /* ImageSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSaver.swift; sourceTree = "<group>"; };
 		7D12DBEE2AA9596C0045D2BB /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
-		7D12DBF12AA9649A0045D2BB /* WhoWasThat.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WhoWasThat.xcdatamodel; sourceTree = "<group>"; };
-		7D12DBFB2AA9661E0045D2BB /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
-		7D12DBFD2AAA13700045D2BB /* Contact+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Contact+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
-		7D12DBFE2AAA13700045D2BB /* Contact+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Contact+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
-		7D12DC012AAA2D1C0045D2BB /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		7D12DC052AAA52A80045D2BB /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
+		7D12DC072AAA547F0045D2BB /* ContactEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactEntryView.swift; sourceTree = "<group>"; };
 		7DD203E32AA138A20087B1D7 /* WhoWasThat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhoWasThat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DD203E62AA138A20087B1D7 /* WhoWasThatApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhoWasThatApp.swift; sourceTree = "<group>"; };
 		7DD203E82AA138A20087B1D7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -76,16 +68,12 @@
 				7DD203E62AA138A20087B1D7 /* WhoWasThatApp.swift */,
 				7DD203E82AA138A20087B1D7 /* ContentView.swift */,
 				7DD203F62AA2702E0087B1D7 /* ContentView-ModelView.swift */,
+				7D12DC072AAA547F0045D2BB /* ContactEntryView.swift */,
 				7D12DBEA2AA7733F0045D2BB /* AddContactView.swift */,
 				7D12DBEE2AA9596C0045D2BB /* DetailView.swift */,
 				7DD203F82AA281850087B1D7 /* FileManager.swift */,
-				7D12DBEC2AA929360045D2BB /* ImageSaver.swift */,
 				7DD203F42AA26F480087B1D7 /* ImagePicker.swift */,
-				7D12DC012AAA2D1C0045D2BB /* Person.swift */,
-				7D12DBFB2AA9661E0045D2BB /* DataController.swift */,
-				7D12DBF02AA9649A0045D2BB /* WhoWasThat.xcdatamodeld */,
-				7D12DBFD2AAA13700045D2BB /* Contact+CoreDataClass.swift */,
-				7D12DBFE2AAA13700045D2BB /* Contact+CoreDataProperties.swift */,
+				7D12DC052AAA52A80045D2BB /* Contact.swift */,
 				7DD203EA2AA138A40087B1D7 /* Assets.xcassets */,
 				7DD203EC2AA138A40087B1D7 /* Preview Content */,
 			);
@@ -172,17 +160,13 @@
 			files = (
 				7D12DBEF2AA9596C0045D2BB /* DetailView.swift in Sources */,
 				7DD203F92AA281850087B1D7 /* FileManager.swift in Sources */,
-				7D12DC002AAA13700045D2BB /* Contact+CoreDataProperties.swift in Sources */,
+				7D12DC062AAA52A80045D2BB /* Contact.swift in Sources */,
 				7DD203F52AA26F480087B1D7 /* ImagePicker.swift in Sources */,
 				7DD203F72AA2702E0087B1D7 /* ContentView-ModelView.swift in Sources */,
+				7D12DC082AAA547F0045D2BB /* ContactEntryView.swift in Sources */,
 				7DD203E92AA138A20087B1D7 /* ContentView.swift in Sources */,
 				7D12DBEB2AA7733F0045D2BB /* AddContactView.swift in Sources */,
 				7DD203E72AA138A20087B1D7 /* WhoWasThatApp.swift in Sources */,
-				7D12DBED2AA929360045D2BB /* ImageSaver.swift in Sources */,
-				7D12DBFF2AAA13700045D2BB /* Contact+CoreDataClass.swift in Sources */,
-				7D12DC022AAA2D1C0045D2BB /* Person.swift in Sources */,
-				7D12DBFC2AA9661E0045D2BB /* DataController.swift in Sources */,
-				7D12DBF22AA9649A0045D2BB /* WhoWasThat.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -383,19 +367,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		7D12DBF02AA9649A0045D2BB /* WhoWasThat.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				7D12DBF12AA9649A0045D2BB /* WhoWasThat.xcdatamodel */,
-			);
-			currentVersion = 7D12DBF12AA9649A0045D2BB /* WhoWasThat.xcdatamodel */;
-			path = WhoWasThat.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 7DD203DB2AA138A20087B1D7 /* Project object */;
 }

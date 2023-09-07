@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct DetailView: View {
-    @State var person: Person
+    @State var contact: Contact
     @State private var image: Image?
     
     var body: some View {
@@ -18,20 +18,22 @@ struct DetailView: View {
                     .resizable()
                     .scaledToFit()
             }
-            .navigationTitle("\(person.firstName) \(person.lastName)")
+            .navigationTitle("\(contact.firstName) \(contact.lastName)")
         }
         .onAppear {
-            image = Image(uiImage: person.picture)
+            if let uiimage = UIImage(data: contact.picture) {
+                image = Image(uiImage: uiimage)
+            }
         }
     }
 }
 
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
-        @State var person = Person(id: UUID(), firstName: "Steve", lastName: "Jobs", pictureFilename: "", picutre: UIImage(systemName: "star.fill")!)
+        @State var contact = Contact.example
         
         NavigationView {
-            DetailView(person: person)
+            DetailView(contact: contact)
         }
     }
 }
