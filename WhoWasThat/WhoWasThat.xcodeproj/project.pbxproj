@@ -11,6 +11,7 @@
 		7D12DBEF2AA9596C0045D2BB /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D12DBEE2AA9596C0045D2BB /* DetailView.swift */; };
 		7D12DC062AAA52A80045D2BB /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D12DC052AAA52A80045D2BB /* Contact.swift */; };
 		7D12DC082AAA547F0045D2BB /* ContactEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D12DC072AAA547F0045D2BB /* ContactEntryView.swift */; };
+		7D12DC0A2AAA71AD0045D2BB /* LocationFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D12DC092AAA71AD0045D2BB /* LocationFetcher.swift */; };
 		7DD203E72AA138A20087B1D7 /* WhoWasThatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD203E62AA138A20087B1D7 /* WhoWasThatApp.swift */; };
 		7DD203E92AA138A20087B1D7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD203E82AA138A20087B1D7 /* ContentView.swift */; };
 		7DD203EB2AA138A40087B1D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7DD203EA2AA138A40087B1D7 /* Assets.xcassets */; };
@@ -25,6 +26,7 @@
 		7D12DBEE2AA9596C0045D2BB /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		7D12DC052AAA52A80045D2BB /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		7D12DC072AAA547F0045D2BB /* ContactEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactEntryView.swift; sourceTree = "<group>"; };
+		7D12DC092AAA71AD0045D2BB /* LocationFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationFetcher.swift; sourceTree = "<group>"; };
 		7DD203E32AA138A20087B1D7 /* WhoWasThat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhoWasThat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DD203E62AA138A20087B1D7 /* WhoWasThatApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhoWasThatApp.swift; sourceTree = "<group>"; };
 		7DD203E82AA138A20087B1D7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -71,9 +73,10 @@
 				7D12DC072AAA547F0045D2BB /* ContactEntryView.swift */,
 				7D12DBEA2AA7733F0045D2BB /* AddContactView.swift */,
 				7D12DBEE2AA9596C0045D2BB /* DetailView.swift */,
+				7D12DC052AAA52A80045D2BB /* Contact.swift */,
+				7D12DC092AAA71AD0045D2BB /* LocationFetcher.swift */,
 				7DD203F82AA281850087B1D7 /* FileManager.swift */,
 				7DD203F42AA26F480087B1D7 /* ImagePicker.swift */,
-				7D12DC052AAA52A80045D2BB /* Contact.swift */,
 				7DD203EA2AA138A40087B1D7 /* Assets.xcassets */,
 				7DD203EC2AA138A40087B1D7 /* Preview Content */,
 			);
@@ -160,6 +163,7 @@
 			files = (
 				7D12DBEF2AA9596C0045D2BB /* DetailView.swift in Sources */,
 				7DD203F92AA281850087B1D7 /* FileManager.swift in Sources */,
+				7D12DC0A2AAA71AD0045D2BB /* LocationFetcher.swift in Sources */,
 				7D12DC062AAA52A80045D2BB /* Contact.swift in Sources */,
 				7DD203F52AA26F480087B1D7 /* ImagePicker.swift in Sources */,
 				7DD203F72AA2702E0087B1D7 /* ContentView-ModelView.swift in Sources */,
@@ -298,6 +302,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "Would you like to use Biometrics to log in?";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location to mark where you met a contact.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "The app needs access to your photo library to grab the picture of your contacts";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -328,6 +333,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "Would you like to use Biometrics to log in?";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location to mark where you met a contact.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "The app needs access to your photo library to grab the picture of your contacts";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

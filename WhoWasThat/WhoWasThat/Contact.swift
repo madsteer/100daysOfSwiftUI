@@ -5,7 +5,7 @@
 //  Created by Cory Steers on 9/7/23.
 //
 
-import Foundation
+import CoreLocation
 import UIKit
 
 struct Contact: Codable, Identifiable, Equatable, Hashable {
@@ -13,6 +13,7 @@ struct Contact: Codable, Identifiable, Equatable, Hashable {
     var firstName: String
     var lastName: String
     var picture: Data
+    var location: CLLocationCoordinate2D?
     
     private static let imageData = UIImage(systemName: "star.fill")?.jpegData(compressionQuality: 0.5)
     static let example = Contact(id: UUID(), firstName: "Steve", lastName: "Jobs", picture: imageData!)
