@@ -13,40 +13,48 @@ struct ContentView: View {
     @State private var newContact: Contact?
     
     var body: some View {
-        if viewModel.isUnlocked {
-            NavigationView {
-                List(viewModel.contacts, id: \.id) { contact in
-                    NavigationLink {
-                        DetailView(contact: contact)
-                    } label: {
-                        ContactEntryView(contact: contact)
+        Section {
+            if viewModel.isUnlocked {
+                NavigationView {
+                    List(viewModel.contacts, id: \.id) { contact in
+                        NavigationLink {
+                            DetailView(contact: contact)
+                        } label: {
+                            ContactEntryView(contact: contact)
+                        }
+                    }
+                    .navigationTitle("Who was that?")
+                    .toolbar {
+                        Button {
+                            viewModel.showingAddContactScreen = true
+                        } label: {
+                            Image(systemName: "plus")
+                        }
+                    }
+                    .sheet(isPresented: $viewModel.showingAddContactScreen) {
+                        AddContactView(contact: $newContact)
+                    }
+                    .onChange(of: newContact) { _ in
+                        if let newContact = newContact {
+                            viewModel.save(newContact)
+                        }
                     }
                 }
-                .navigationTitle("Who was that?")
-                .toolbar {
-                    Button {
-                        viewModel.showingAddContactScreen = true
-                    } label: {
-                        Image(systemName: "plus")
-                    }
+            } else {
+                Button("Unlock App") {
+                    viewModel.authenticate()
                 }
-                .sheet(isPresented: $viewModel.showingAddContactScreen) {
-                    AddContactView(contact: $newContact)
-                }
-                .onChange(of: newContact) { _ in
-                    if let newContact = newContact {
-                        viewModel.save(newContact)
-                    }
-                }
+                .padding()
+                .background(.blue)
+                .foregroundColor(.white)
+                .clipShape(Capsule())
             }
-        } else {
-            Button("Unlock App") {
-//                viewModel.authenticate()
-            }
-            .padding()
-            .background(.blue)
-            .foregroundColor(.white)
-            .clipShape(Capsule())
+        }
+        .onAppear(perform: viewModel.authenticate)
+        .alert("Biometric Auth failed!", isPresented: $viewModel.isUnlockedFailedAlert) {
+            Button("OK") {}
+        } message: {
+            Text(viewModel.isUnlockedFailedMessage)
         }
     }
 }
