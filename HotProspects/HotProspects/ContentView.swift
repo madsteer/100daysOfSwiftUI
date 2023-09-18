@@ -8,14 +8,41 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var backgroundColor = Color.red
+    
     var body: some View {
-        Image("armstrong")
-            .interpolation(.none) // this would work better with a crappy really small picture
-            .resizable()
-            .scaledToFit()
-            .frame(maxHeight: .infinity)
-            .background(.black)
-            .ignoresSafeArea()
+//        VStack {
+//            Image(systemName: "globe")
+//                .imageScale(.large)
+//                .foregroundStyle(.tint)
+//            Text("Hello, world!")
+//        }
+//        .padding()
+        
+        VStack {
+            Text("Hello, world!")
+                .padding()
+                .background(backgroundColor)
+            
+            Text("Change Color")
+                .padding()
+                .contextMenu {
+                    Button(role: .destructive) {
+                        backgroundColor = .red
+                    } label: {
+                        Label("Red", systemImage: "checkmark.circle.fill")
+                            .foregroundColor(.red)
+                    }
+                    
+                    Button("Green") {
+                        backgroundColor = .green
+                    }
+                    
+                    Button("Blue") {
+                        backgroundColor = .blue
+                    }
+                }
+        }
     }
 }
 
