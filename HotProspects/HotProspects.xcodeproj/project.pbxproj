@@ -54,8 +54,8 @@
 			children = (
 				7DC600082AB25FBD002BCE36 /* HotProspectsApp.swift */,
 				7DC6000A2AB25FBD002BCE36 /* ContentView.swift */,
-				7DA7BFD22ABB8B9B0043B0B6 /* Prospect.swift */,
 				7DA7BFCE2ABB89060043B0B6 /* ProspectsView.swift */,
+				7DA7BFD22ABB8B9B0043B0B6 /* Prospect.swift */,
 				7DA7BFD02ABB890F0043B0B6 /* MeView.swift */,
 				7DC6000C2AB25FBE002BCE36 /* Assets.xcassets */,
 				7DC6000E2AB25FBE002BCE36 /* HotProspects.entitlements */,
