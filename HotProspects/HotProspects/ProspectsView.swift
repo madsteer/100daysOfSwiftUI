@@ -12,9 +12,15 @@ import UserNotifications
 struct ProspectsView: View {
     @EnvironmentObject var prospects: Prospects
     @State private var isShowingScanner = false
+    @State private var isShowingSortingSheet = false
+    @State private var sort = SortType.name
     
     enum FilterType {
         case none, contacted, uncontacted
+    }
+    
+    enum SortType {
+        case name, date
     }
     
     let filter: FilterType
@@ -69,15 +75,35 @@ struct ProspectsView: View {
             }
             .navigationTitle(title)
             .toolbar {
+                    Button {
+                        isShowingSortingSheet = true
+                        
+                    } label: {
+                        Label("Change sort order", systemImage: "arrow.up.arrow.down.circle")
+                    }
+
                 Button {
-                    isShowingScanner = true
-                    
-                } label: {
-                    Label("Scan", systemImage: "qrcode.viewfinder")
-                }
+                        isShowingScanner = true
+                        
+                    } label: {
+                        Label("Scan", systemImage: "qrcode.viewfinder")
+                    }
             }
             .sheet(isPresented: $isShowingScanner) {
                 CodeScannerView(codeTypes: [.qr], simulatedData: "Paul Hudson\npaul@hackingwithswift.com", completion: handleScan)
+            }
+            .confirmationDialog("Select a sortiing method", isPresented: $isShowingSortingSheet) {
+                Button {
+                    self.sort = .name
+                } label: {
+                    Text("Sort contacts by name")
+                }
+                
+                Button {
+                    sort = .date
+                } label: {
+                    Text("sort contacts by date added")
+                }
             }
         }
     }
@@ -94,13 +120,22 @@ struct ProspectsView: View {
     }
     
     var filteredProspects: [Prospect] {
+        let sortedProspects = prospects.people.sorted {
+            switch sort {
+            case .name:
+                $0.name < $1.name
+            case .date:
+                $0.dateAdded > $1.dateAdded
+            }
+        }
+        
         switch filter {
         case .none:
-            return prospects.people
+            return sortedProspects
         case .contacted:
-            return prospects.people.filter { $0.isContacted }
+            return sortedProspects.filter { $0.isContacted }
         case .uncontacted:
-            return prospects.people.filter { !$0.isContacted }
+            return sortedProspects.filter { !$0.isContacted }
         }
     }
     
@@ -131,8 +166,8 @@ struct ProspectsView: View {
 
             var dateComponents = DateComponents()
             dateComponents.hour = 9
-//            let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false) // for production
-            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false) // for testing
+            let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false) // for production
+//            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false) // for testing
             
             let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
             center.add(request)
