@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var currentAmount = 0.0
-    @State private var finalAmount = 1.0
+    @State private var currentAmount = Angle.zero
+    @State private var finalAmount = Angle.zero
     
     var body: some View {
         VStack {
@@ -24,17 +24,15 @@ struct ContentView: View {
 //                }
         }
         .padding()
-        .scaleEffect(finalAmount + currentAmount)
+        .rotationEffect(finalAmount + currentAmount)
         .gesture(
-            MagnificationGesture()
-                .onChanged { amount in
-                    print("executing on changed")
-                    currentAmount = amount - 1
+            RotationGesture()
+                .onChanged { angle in
+                    currentAmount = angle
                 }
-                .onEnded { amount in
-                    print("executing on ended")
+                .onEnded { angle in
                     finalAmount += currentAmount
-                    currentAmount = 0
+                    currentAmount = .zero
                 }
         )
 
