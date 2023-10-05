@@ -8,41 +8,26 @@
 import SwiftUI
 
 struct ContentView: View {
+//    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    let timer = Timer.publish(every: 1, tolerance: 0.5, on: .main, in: .common).autoconnect()
+    @State private var counter = 0
+    
     var body: some View {
-//        VStack {
-//            Image(systemName: "globe")
-//                .imageScale(.large)
-//                .foregroundStyle(.tint)
-//            Text("Hello, world!")
-//        }
-//        .padding()
-        
         VStack {
-            Text("Hello")
-            Spacer().frame(height: 100)
-            Text("World")
+            Image(systemName: "globe")
+                .imageScale(.large)
+                .foregroundStyle(.tint)
+            Text("Hello, world!")
         }
-        .contentShape(Rectangle()) // makes whole Vstack tappable including Spacer area
-        .onTapGesture {
-            print("Vstack tapped!")
+        .padding()
+        .onReceive(timer) { time in
+            if counter == 5 {
+                timer.upstream.connect().cancel()
+            } else {
+                print("The time is now \(time)")
+            }
+            counter += 1
         }
-//        ZStack {
-//            Rectangle()
-//                .fill(.blue)
-//                .frame(width: 300, height: 300)
-//                .onTapGesture {
-//                    print("Rectangle tapped!")
-//                }
-//            
-//            Circle()
-//                .fill(.red)
-//                .frame(width: 300, height: 300)
-//                .contentShape(Rectangle()) // whole rectangle is circle tapped
-//                .onTapGesture {
-//                    print("Circle tapped!")
-//                }
-//                .allowsHitTesting(false) // whole rectangle is rectangle tapped
-//        }
     }
 }
 
