@@ -16,8 +16,7 @@ func withOptionalAnimation<Result>(_ animation: Animation? = .default, _ body: (
 }
 
 struct ContentView: View {
-    @Environment(\..accessibilityReduceMotion) var reduceMotion
-    @State private var scale = 1.0
+    @Environment(\..accessibilityReduceTransparency) var reduceTransparency
     
     var body: some View {
         VStack {
@@ -27,19 +26,9 @@ struct ContentView: View {
             Text("Hello, world!")
         }
         .padding()
-        .scaleEffect(scale)
-        .onTapGesture {
-//            if reduceMotion {
-//                scale += 1.5
-//            } else {
-//                withAnimation {
-//                    scale *= 1.5
-//                }
-//            }
-            withOptionalAnimation {
-                scale *= 1.5
-            }
-        }
+        .background(reduceTransparency ? .black : .black.opacity(0.5))
+        .foregroundColor(.white)
+        .clipShape(Capsule())
         
         
     }
