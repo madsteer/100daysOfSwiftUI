@@ -8,25 +8,28 @@
 import SwiftUI
 
 struct ContentView: View {
-    @Environment(\.scenePhase) var scenePhase
+    @Environment(\.accessibilityDifferentiateWithoutColor) var differentiateWithoutColor
     
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+//        VStack {
+//            Image(systemName: "globe")
+//                .imageScale(.large)
+//                .foregroundStyle(.tint)
+//            Text("Hello, world!")
+//        }
+//        .padding()
+        
+        HStack {
+            if differentiateWithoutColor {
+                Image(systemName: "checkmark.circle")
+            }
+            
+            Text("Success")
         }
         .padding()
-        .onChange(of: scenePhase) { newPhase in
-            if newPhase == .active {
-                print("Active")
-            } else if newPhase == .inactive {
-                print("Inactive")
-            } else if newPhase == .background {
-                print("Background")
-            }
-        }
+        .background(differentiateWithoutColor ? .black : .green)
+        .foregroundColor(.white)
+        .clipShape(Capsule())
     }
 }
 
