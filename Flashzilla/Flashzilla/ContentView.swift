@@ -18,6 +18,12 @@ struct ContentView: View {
     @Environment(\.accessibilityDifferentiateWithoutColor) var differentiateWithColor
     @State private var cards = Array<Card>(repeating: Card.example, count: 10)
     
+    @State private var timeRemaining = 100
+    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    
+    @Environment(\.scenePhase) var scenePhase
+    @State private var isActiveApp = true
+    
     var body: some View {
         ZStack {
             Image("background")
@@ -25,6 +31,14 @@ struct ContentView: View {
                 .ignoresSafeArea()
             
             VStack {
+                Text("Time: \(timeRemaining)")
+                    .font(.largeTitle)
+                    .foregroundColor(.white)
+                    .padding(.horizontal, 20)
+                    .padding(.vertical, 5)
+                    .background(.black.opacity(0.75))
+                    .clipShape(Capsule())
+                
                 ZStack {
                     ForEach(0..<cards.count, id: \.self) { index in
                         CardView(card: cards[index]) {
@@ -60,6 +74,19 @@ struct ContentView: View {
                 }
             }
         }
+        .onReceive(timer) { time in
+            guard isActiveApp else { return }
+            
+            if timeRemaining > 0 {
+                timeRemaining -= 1
+            }
+        }
+        .onChange(of: scenePhase) {
+            isActiveApp = (scenePhase == .active) ? true : false
+        }
+//        .onChange(of: scenePhase) { newPhase in                // !!! deprecated in iOS17
+//            isActiveApp = (newPhase == .active) ? true : false
+//        }
     }
     
     func removeCard(at index: Int) {
