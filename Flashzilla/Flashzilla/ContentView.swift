@@ -49,6 +49,15 @@ struct ContentView: View {
                             .stacked(at: index, in: cards.count)
                     }
                 }
+                .allowsHitTesting(timeRemaining > 0)
+                
+                if cards.isEmpty {
+                    Button("Start Again", action: resetCards)
+                        .padding()
+                        .background(.white)
+                        .foregroundColor(.black)
+                        .clipShape(Capsule())
+                }
             }
             
             if differentiateWithColor {
@@ -82,15 +91,31 @@ struct ContentView: View {
             }
         }
         .onChange(of: scenePhase) {
-            isActiveApp = (scenePhase == .active) ? true : false
+            if scenePhase == .active {
+                if cards.isEmpty == false {
+                    isActiveApp = true
+                }
+            } else {
+                isActiveApp = false
+            }
         }
 //        .onChange(of: scenePhase) { newPhase in                // !!! deprecated in iOS17
 //            isActiveApp = (newPhase == .active) ? true : false
 //        }
     }
     
+    func resetCards() {
+        cards = Array<Card>(repeating: Card.example, count: 10)
+        timeRemaining = 100
+        isActiveApp = true
+    }
+    
     func removeCard(at index: Int) {
         cards.remove(at: index)
+        
+        if cards.isEmpty {
+            isActiveApp = false
+        }
     }
 }
 
