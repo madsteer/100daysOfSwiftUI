@@ -17,13 +17,15 @@ extension View {
 struct ContentView: View {
     @Environment(\.accessibilityDifferentiateWithoutColor) var differentiateWithColor
     @Environment(\.accessibilityVoiceOverEnabled) var voiceOverEnabled
-    @State private var cards = Array<Card>(repeating: Card.example, count: 10)
+    @State private var cards = [Card]()
     
     @State private var timeRemaining = 100
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     @Environment(\.scenePhase) var scenePhase
     @State private var isActiveApp = true
+    
+    @State private var showingEditScreen = false
     
     var body: some View {
         ZStack {
@@ -62,6 +64,26 @@ struct ContentView: View {
                         .clipShape(Capsule())
                 }
             }
+            
+            VStack {
+                HStack {
+                    Spacer()
+                    
+                    Button {
+                        showingEditScreen = true
+                    } label: {
+                        Image(systemName: "plus.circle")
+                            .padding()
+                            .background(.black.opacity(0.7))
+                            .clipShape(Circle())
+                    }
+                }
+                
+                Spacer()
+            }
+            .foregroundColor(.white)
+            .font(.largeTitle)
+            .padding()
             
             if differentiateWithColor || voiceOverEnabled {
                 VStack {
@@ -121,10 +143,23 @@ struct ContentView: View {
 //        .onChange(of: scenePhase) { newPhase in                // !!! deprecated in iOS17
 //            isActiveApp = (newPhase == .active) ? true : false
 //        }
+        .sheet(isPresented: $showingEditScreen, onDismiss: resetCards, content: EditCardsView.init)
+        .onAppear(perform: resetCards)
     }
     
+    func loadData() {
+        if let savedCards = UserDefaults.standard.data(forKey: "Cards") {
+            if let decodedCards = try? JSONDecoder().decode([Card].self, from: savedCards) {
+                cards = decodedCards
+                return
+            }
+        }
+        
+        cards = []
+    }
+
     func resetCards() {
-        cards = Array<Card>(repeating: Card.example, count: 10)
+        loadData()
         timeRemaining = 100
         isActiveApp = true
     }
