@@ -73,7 +73,7 @@ struct CardView: View {
                         
                         removal?()
                     } else {
-                        offset = .zero
+                        offset = CGSizeMake(0.1, 0.0)
                     }
                 }
         )
