@@ -43,15 +43,17 @@ struct ContentView: View {
                     .clipShape(Capsule())
                 
                 ZStack {
-                    ForEach(0..<cards.count, id: \.self) { index in
-                        CardView(card: cards[index]) {
-                            withAnimation {
-                                removeCard(at: index)
+                    ForEach(cards, id: \.id) { card in
+                        if let index = cards.firstIndex(of: card) {
+                            CardView(card: card) { correct in
+                                withAnimation(Animation.linear.delay(0.6)) {
+                                    removeCard(at: index, isCorrect: correct)
+                                }
                             }
-                        }
                             .stacked(at: index, in: cards.count)
                             .allowsHitTesting(index == cards.count - 1)
                             .accessibilityHidden(index < cards.count - 1)
+                        }
                     }
                 }
                 .allowsHitTesting(timeRemaining > 0)
@@ -92,7 +94,7 @@ struct ContentView: View {
                     HStack {
                         Button {
                             withAnimation {
-                                removeCard(at: cards.count - 1)
+                                removeCard(at: cards.count - 1, isCorrect: true)
                             }
                         } label: {
                             Image(systemName: "xmark.circle")
@@ -107,7 +109,7 @@ struct ContentView: View {
                         
                         Button {
                             withAnimation {
-                                removeCard(at: cards.count - 1)
+                                removeCard(at: cards.count - 1, isCorrect: true)
                             }
                         } label: {
                             Image(systemName: "checkmark.circle")
@@ -164,9 +166,15 @@ struct ContentView: View {
         isActiveApp = true
     }
     
-    func removeCard(at index: Int) {
+    func removeCard(at index: Int, isCorrect: Bool) {
         guard index >= 0 else { return }
+        let removedCard = cards[index]
         cards.remove(at: index)
+        
+        if !isCorrect {
+            let newCard = Card(id: UUID(), prompt: removedCard.prompt, answer: removedCard.answer)
+            cards.insert(newCard, at: 0)
+        }
         
         if cards.isEmpty {
             isActiveApp = false
