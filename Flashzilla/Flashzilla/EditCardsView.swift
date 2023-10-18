@@ -14,6 +14,7 @@ struct EditCardsView: View {
     @State private var prompt = ""
     @State private var answer = ""
     
+    private let saveCardsFile = FileManager.documentsDirectory.appendingPathComponent("SavedCards")
     
     var body: some View {
         NavigationView {
@@ -72,19 +73,21 @@ struct EditCardsView: View {
     }
     
     func loadData() {
-        if let savedCards = UserDefaults.standard.data(forKey: "Cards") {
-            if let decodedCards = try? JSONDecoder().decode([Card].self, from: savedCards) {
-                cards = decodedCards
-                return
-            }
+        do {
+            let data = try Data(contentsOf: saveCardsFile)
+            cards = try JSONDecoder().decode([Card].self, from: data)
+        } catch {
+            print(error.localizedDescription)
+            cards = []
         }
-        
-        cards = []
     }
     
     func saveData() {
-        if let encoded = try? JSONEncoder().encode(cards) {
-            UserDefaults.standard.set(encoded, forKey: "Cards")
+        do {
+            let data = try JSONEncoder().encode(cards)
+            try data.write(to: saveCardsFile, options: [.atomicWrite, .completeFileProtection])
+        } catch {
+            print("Unable to save the new card: \(error.localizedDescription)")
         }
     }
 }

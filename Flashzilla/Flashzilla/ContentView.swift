@@ -22,6 +22,8 @@ struct ContentView: View {
     @State private var timeRemaining = 100
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
+    private let saveCardsFile = FileManager.documentsDirectory.appendingPathComponent("SavedCards")
+    
     @Environment(\.scenePhase) var scenePhase
     @State private var isActiveApp = true
     
@@ -150,14 +152,13 @@ struct ContentView: View {
     }
     
     func loadData() {
-        if let savedCards = UserDefaults.standard.data(forKey: "Cards") {
-            if let decodedCards = try? JSONDecoder().decode([Card].self, from: savedCards) {
-                cards = decodedCards
-                return
-            }
+        do {
+            let data = try Data(contentsOf: saveCardsFile)
+            cards = try JSONDecoder().decode([Card].self, from: data)
+        } catch {
+            print(error.localizedDescription)
+            cards = []
         }
-        
-        cards = []
     }
 
     func resetCards() {

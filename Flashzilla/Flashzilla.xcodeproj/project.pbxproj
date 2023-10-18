@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7D5E345E2AE060E70031A0F9 /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D5E345D2AE060E70031A0F9 /* FileManager.swift */; };
 		7DB15C9C2AC5CB1A004913B9 /* FlashzillaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB15C9B2AC5CB1A004913B9 /* FlashzillaApp.swift */; };
 		7DB15C9E2AC5CB1A004913B9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB15C9D2AC5CB1A004913B9 /* ContentView.swift */; };
 		7DB15CA02AC5CB1C004913B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7DB15C9F2AC5CB1C004913B9 /* Assets.xcassets */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7D5E345D2AE060E70031A0F9 /* FileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
 		7DB15C982AC5CB1A004913B9 /* Flashzilla.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flashzilla.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DB15C9B2AC5CB1A004913B9 /* FlashzillaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashzillaApp.swift; sourceTree = "<group>"; };
 		7DB15C9D2AC5CB1A004913B9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -62,6 +64,7 @@
 				7DCA67BD2AD08FC7003EDB44 /* CardView.swift */,
 				7DCFD1D12AD74211005932B3 /* EditCardsView.swift */,
 				7DCA67BB2AD08E2F003EDB44 /* Card.swift */,
+				7D5E345D2AE060E70031A0F9 /* FileManager.swift */,
 				7DB15C9F2AC5CB1C004913B9 /* Assets.xcassets */,
 				7DB15CA12AC5CB1C004913B9 /* Preview Content */,
 			);
@@ -149,6 +152,7 @@
 				7DB15C9E2AC5CB1A004913B9 /* ContentView.swift in Sources */,
 				7DCA67BC2AD08E2F003EDB44 /* Card.swift in Sources */,
 				7DCA67BE2AD08FC7003EDB44 /* CardView.swift in Sources */,
+				7D5E345E2AE060E70031A0F9 /* FileManager.swift in Sources */,
 				7DCFD1D22AD74211005932B3 /* EditCardsView.swift in Sources */,
 				7DB15C9C2AC5CB1A004913B9 /* FlashzillaApp.swift in Sources */,
 			);
