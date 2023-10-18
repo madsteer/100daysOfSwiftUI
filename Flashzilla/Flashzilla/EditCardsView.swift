@@ -10,7 +10,7 @@ import SwiftUI
 struct EditCardsView: View {
     @Environment(\.dismiss) var dismiss
     
-    @State private var cards = [Card]()
+    @Binding var cards: [Card]
     @State private var prompt = ""
     @State private var answer = ""
     
@@ -45,7 +45,6 @@ struct EditCardsView: View {
                 Button("Done", action: done)
             }
             .listStyle(.grouped)
-            .onAppear(perform: loadData)
         }
     }
     
@@ -72,16 +71,6 @@ struct EditCardsView: View {
         dismiss()
     }
     
-    func loadData() {
-        do {
-            let data = try Data(contentsOf: saveCardsFile)
-            cards = try JSONDecoder().decode([Card].self, from: data)
-        } catch {
-            print(error.localizedDescription)
-            cards = []
-        }
-    }
-    
     func saveData() {
         do {
             let data = try JSONEncoder().encode(cards)
@@ -92,8 +81,11 @@ struct EditCardsView: View {
     }
 }
 
-#Preview {
-    NavigationView {
-        EditCardsView()
+struct EditCardsView_Preview: PreviewProvider {
+    static var previews: some View {
+        @State var cards = [Card]()
+        NavigationView {
+            EditCardsView(cards: $cards)
+        }
     }
 }

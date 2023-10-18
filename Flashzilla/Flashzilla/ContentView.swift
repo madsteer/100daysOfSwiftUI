@@ -147,7 +147,9 @@ struct ContentView: View {
 //        .onChange(of: scenePhase) { newPhase in                // !!! deprecated in iOS17
 //            isActiveApp = (newPhase == .active) ? true : false
 //        }
-        .sheet(isPresented: $showingEditScreen, onDismiss: resetCards, content: EditCardsView.init)
+        .sheet(isPresented: $showingEditScreen, onDismiss: resetCards) {
+            EditCardsView(cards: $cards)
+        }
         .onAppear(perform: resetCards)
     }
     
