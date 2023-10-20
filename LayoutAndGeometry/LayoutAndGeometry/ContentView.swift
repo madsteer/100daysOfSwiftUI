@@ -7,28 +7,58 @@
 
 import SwiftUI
 
-extension VerticalAlignment {
-//    struct MidAccountAndName: AlignmentID {
-    enum MidAccountAndName: AlignmentID {
-        static func defaultValue(in context: ViewDimensions) -> CGFloat {
-            context[.top]
+struct OuterView: View {
+    var body: some View {
+        VStack {
+            Text("top")
+            InnerView()
+                .background(.green)
+            Text("bottom")
         }
     }
-    
-    static let midAccountAndName = VerticalAlignment(MidAccountAndName.self)
+}
+
+struct InnerView: View {
+    var body: some View {
+        HStack {
+            Text("left")
+            
+            GeometryReader { geo in
+                    Text("Center")
+                    .background(.blue)
+                    .onTapGesture {
+                        print("Global center is \(geo.frame(in: .global).midX) x \(geo.frame(in: .global).midY)")
+                        print("Local center is \(geo.frame(in: .local).midX) x \(geo.frame(in: .local).midY)")
+                        print("Custom center is \(geo.frame(in: .named("Custom")).midX) x \(geo.frame(in: .named("Custom")).midY)")
+                    }
+            }
+            .background(.orange)
+            
+            Text("right")
+        }
+    }
 }
 
 struct ContentView: View {
     var body: some View {
-                VStack {
-                    Image(systemName: "globe")
-                    Text("Live long and prosper!")
-                }
-                .padding()
+//        VStack {
+//            GeometryReader { geo in
+//                VStack {
+//                    Image(systemName: "globe")
+//                    Text("Live long and prosper!")
+//                }
+//                .padding()
+//                .frame(width: geo.size.width * 0.9)
 //                .background(.red)
-//                .position(x: 100, y: 100)
-                .offset(x: 100, y: 100)
-                .background(.red)
+//            }
+//            .background(.green)
+//            
+//            Text("more text")
+//                .background(.blue)
+//        }
+        OuterView()
+            .background(.red)
+            .coordinateSpace(name: "Custom")
     }
 }
 
