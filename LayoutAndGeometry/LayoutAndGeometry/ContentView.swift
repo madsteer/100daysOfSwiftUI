@@ -18,10 +18,10 @@ struct ContentView: View {
                         Text("Row #\(index)")
                             .font(Font.title)
                             .frame(maxWidth: .infinity)
-                            .background(colors[index % 7])
+                            .background(Color(hue: min(geo.frame(in: .global).origin.y / fullView.frame(in: .global).maxY, 1.0), saturation: 1.0, brightness: 1.0))
                             .rotation3DEffect(.degrees(geo.frame(in: .global).minY - fullView.size.height / 2) / 5, axis: (x: 0, y: 1, z: 0))
-                            .opacity((1 * geo.frame(in: .global).origin.y / 200.0) < 0.5 ? 0.5 : (1 * geo.frame(in: .global).origin.y / 200.0) )
-                            .scaleEffect((geo.frame(in: .global).origin.y / fullView.frame(in: .global).maxY * 2) < 0.5 ? 0.5 : geo.frame(in: .global).origin.y / fullView.frame(in: .global).maxY * 2)
+                            .opacity(max(1 * geo.frame(in: .global).origin.y / 200.0, 0.5))
+                            .scaleEffect(max(geo.frame(in: .global).origin.y / fullView.frame(in: .global).maxY * 2, 0.5))
                     }
                     .frame(height: 40)
                 }
