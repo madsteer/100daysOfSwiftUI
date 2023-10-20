@@ -7,44 +7,46 @@
 
 import SwiftUI
 
+extension VerticalAlignment {
+//    struct MidAccountAndName: AlignmentID {
+    enum MidAccountAndName: AlignmentID {
+        static func defaultValue(in context: ViewDimensions) -> CGFloat {
+            context[.top]
+        }
+    }
+    
+    static let midAccountAndName = VerticalAlignment(MidAccountAndName.self)
+}
+
 struct ContentView: View {
     var body: some View {
-//        VStack {
-//            Image(systemName: "globe")
-//                .imageScale(.large)
-//                .foregroundStyle(.tint)
-//            Text("Live long and prosper!")
-//                .frame(width: 300, height: 300, alignment: .topLeading)
-//                .offset(x: 50, y: 50)
-//        }
-//        .padding()
+        //        VStack {
+        //            Image(systemName: "globe")
+        //                .imageScale(.large)
+        //                .foregroundStyle(.tint)
+        //            Text("Live long and prosper!")
+        //                .frame(width: 300, height: 300, alignment: .topLeading)
+        //                .offset(x: 50, y: 50)
+        //        }
+        //        .padding()
         
-//        HStack(alignment: .lastTextBaseline) {
-//            Text("Live")
-//                .font(.caption)
-//            Text("long")
-//            Text("and")
-//                .font(.title)
-//            Text("prosper")
-//                .font(.largeTitle)
-//        }
-        
-        VStack(alignment: .leading) {
-//            Text("Hello, world!")
-//                .alignmentGuide(.leading) { d in
-//                    d[.trailing]
-//                }
-//            Text("This is a longer line of text")
-            ForEach(0..<10) { position in
-                    Text("Number \(position)")
-                    .alignmentGuide(.leading) { _ in
-                            Double(position) * -10
-                    }
+        HStack(alignment: .midAccountAndName) {
+            VStack {
+                Text("@madsteer")
+                    .alignmentGuide(.midAccountAndName) { d in d[VerticalAlignment.center] }
+                Image("apollo13")
+                    .resizable()
+                    .frame(width: 64, height: 64)
+                
+            }
+            
+            VStack {
+                Text("Full name:")
+                Text("CORY STEERS")
+                    .alignmentGuide(.midAccountAndName) { d in d[VerticalAlignment.center] }
+                    .font(.largeTitle)
             }
         }
-        .background(.red)
-        .frame(width: 400, height: 400)
-        .background(.blue)
     }
 }
 
