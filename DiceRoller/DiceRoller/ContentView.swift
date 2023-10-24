@@ -66,7 +66,7 @@ struct ContentView: View {
                             Text("\(roll.dice.count) dice with \(roll.dice[0].numSides) sides, result: \(roll.total)")
                         }
                     }
-                    .onDelete(perform: removeARoll)
+                    .onDelete(perform: removeARoll) 
                 }
             }
             .navigationTitle("Dice Roller")
