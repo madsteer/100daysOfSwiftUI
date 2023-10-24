@@ -7,36 +7,60 @@
 
 import SwiftUI
 
-struct User: Identifiable {
-    var id = "Taylor Swift"
+struct UserView: View {
+    var body: some View {
+        Group {
+            Text("Name: Paul")
+            Text("Country: England")
+            Text("Pets: Luna and Arya")
+        }
+        .font(.title)
+    }
 }
 
 struct ContentView: View {
-    @State private var selectedUser: User? = nil
-    @State private var isShowingUser = false
+//    @State private var layoutVertically = false
+    @Environment(\.horizontalSizeClass) var sizeClass
     
     var body: some View {
-            VStack {
-                Image(systemName: "globe")
-                    .imageScale(.large)
-                    .foregroundStyle(.tint)
-                Text("Hello, world!")
-            }
-            .padding()
-            .onTapGesture {
-                selectedUser = User()
-                isShowingUser.toggle()
-            }
-//            .sheet(item: $selectedUser) { user in
-//                Text(user.id)
+//            VStack {
+//                Image(systemName: "globe")
+//                    .imageScale(.large)
+//                    .foregroundStyle(.tint)
+//                Text("Hello, world!")
 //            }
-//            .alert("Welcome", isPresented: $isShowingUser, presenting: selectedUser) { user in
-//                Button(user.id) { }
+//            .padding()
+        
+//        Group {
+//            if layoutVertically {
+//                VStack {
+//                    UserView()
+//                }
+//            } else {
+//                HStack {
+//                    UserView()
+//                }
 //            }
-//            .alert("Welcome", isPresented: $isShowingUser) {
-//                Button("OK") { }
+//        }
+//        .onTapGesture {
+//            layoutVertically.toggle()
+//        }
+
+//        if sizeClass == .compact {
+//            VStack {
+//                UserView()
 //            }
-            .alert("Welcome", isPresented: $isShowingUser) { } // same as above.  perfect for simple alerts
+//        } else {
+//            HStack {
+//                UserView()
+//            }
+//        }
+
+        if sizeClass == .compact {
+            VStack(content: UserView.init)
+        } else {
+            HStack(content: UserView.init)
+        }
     }
 }
 
