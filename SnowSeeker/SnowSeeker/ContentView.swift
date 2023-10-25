@@ -7,19 +7,21 @@
 
 import SwiftUI
 
+extension View {
+    @ViewBuilder func phoneOnlyNavigationView() -> some View {
+        if UIDevice.current.userInterfaceIdiom == .phone {
+            self.navigationViewStyle(.stack)
+        } else {
+            self
+        }
+    }
+}
+
 struct ContentView: View {
 //    let resorts = Resort.allResorts // why not this??
     let resorts: [Resort] =  Bundle.main.decode("resorts.json")
     
     var body: some View {
-//            VStack {
-//                Image(systemName: "globe")
-//                    .imageScale(.large)
-//                    .foregroundStyle(.tint)
-//                Text("Hello, world!")
-//            }
-//            .padding()
-        
         NavigationView {
             List(resorts) { resort in
                 NavigationLink {
@@ -44,7 +46,10 @@ struct ContentView: View {
                 }
             }
             .navigationTitle("Resorts")
+            
+            WelcomeView()
         }
+//        .phoneOnlyNavigationView()
     }
 }
 
