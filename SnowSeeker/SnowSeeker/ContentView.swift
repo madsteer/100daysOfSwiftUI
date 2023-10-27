@@ -18,11 +18,17 @@ extension View {
 }
 
 struct ContentView: View {
-//    let resorts = Resort.allResorts // why not this??
     let resorts: [Resort] =  Bundle.main.decode("resorts.json")
     
     @StateObject var favorites = Favorites()
     @State private var searchText = ""
+    
+    @State private var isShowingSortingSheet = false
+    @State private var sort = SortType.defalt
+    
+    enum SortType {
+        case defalt, name, country
+    }
     
     var body: some View {
         NavigationView {
@@ -59,7 +65,33 @@ struct ContentView: View {
                 }
             }
             .navigationTitle("Resorts")
+            .toolbar {
+                Button {
+                    isShowingSortingSheet = true
+                } label: {
+                    Label("Change sort order", systemImage: "arrow.up.arrow.down.circle")
+                }
+            }
             .searchable(text: $searchText, prompt: "Search for a resort")
+            .confirmationDialog("Select a sorting method", isPresented: $isShowingSortingSheet) {
+                Button {
+                    self.sort = .name
+                } label: {
+                    Text("Sort resorts by name")
+                }
+                
+                Button {
+                    self.sort = .country
+                } label: {
+                    Text("Sort resorts by country they are in")
+                }
+                
+                Button {
+                    self.sort = .defalt
+                } label: {
+                    Text("Do not sort the resorts at all")
+                }
+            }
             
             WelcomeView()
         }
@@ -68,10 +100,21 @@ struct ContentView: View {
     }
     
     var filteredResorts: [Resort] {
+        let sortedResorts = resorts.sorted { (lhs: Resort, rhs: Resort) in
+            switch sort {
+            case .name:
+                lhs.name < rhs.name
+            case .country:
+                lhs.country < rhs.country
+            default:
+                true
+            }
+        }
+                
         if searchText.isEmpty {
-            return resorts
+            return sortedResorts
         } else {
-            return resorts.filter { $0.name.localizedCaseInsensitiveContains(searchText) }
+            return sortedResorts.filter { $0.name.localizedCaseInsensitiveContains(searchText) }
         }
     }
 }
