@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject var prospects = Prospects()
-    
+
     var body: some View {
         TabView {
             ProspectsView(filter: .none)
@@ -24,7 +24,7 @@ struct ContentView: View {
                 .tabItem {
                     Label("Uncontacted", systemImage: "questionmark.diamond")
                 }
-            
+
             MeView()
                 .tabItem {
                     Label("Me", systemImage: "person.crop.square")
